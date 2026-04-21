@@ -245,7 +245,7 @@ export const BusinessPointsPage: React.FC = () => {
       </section>
 
       <main className={styles.container}>
-        <section className={styles.card}>
+        <section className={`${styles.card} ${styles.liveMonitoringSection}`}>
           <div className={styles.cardHeader}>
             <h2>Live мониторинг</h2>
             <div className={`${styles.status} ${!isConnected ? styles.statusDisconnected : ''}`}>
@@ -462,7 +462,7 @@ export const BusinessPointsPage: React.FC = () => {
           </div>
         </section>
 
-        <div className={styles.twoColumns}>
+        <div className={`${styles.twoColumns} ${styles.employeesSection}`}>
           <article className={styles.smallCard}>
             <div className={styles.rowHeader}>
               <h3>Сотрудники</h3>
@@ -499,7 +499,7 @@ export const BusinessPointsPage: React.FC = () => {
           </article>
         </div>
 
-        <section className={styles.card}>
+        <section className={`${styles.card} ${styles.kpiSection}`}>
           <div className={styles.kpiToolbar}>
             <div className={styles.filterRow}>Бизнес-точка: "Шиномонтаж Макси"</div>
             <div className={styles.filterRow}>Дата: 10.10.2025</div>
