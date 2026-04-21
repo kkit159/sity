@@ -1,0 +1,228 @@
+@use '@/shared/styles/_mixins.scss' as *;
+
+.contactSection {
+  width: 100%;
+  background: var(--contact-bg);
+  padding: 80px 0;
+  color: var(--contact-text-main);
+  margin-top: 40px;
+  transition: background 0.3s ease;
+
+  @include on-desktop-sm {
+    padding: 60px 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 60px;
+
+  @include on-desktop-sm {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    gap: 40px;
+  }
+}
+
+/* === ЛЕВАЯ ЧАСТЬ (Текст сверху, иконки снизу) === */
+.infoBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+
+  @include on-desktop-sm {
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 30px;
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleDesktop {
+  font-family: var(--font-main);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  margin: 0;
+  /* ИСПРАВЛЕНО: Теперь тут всегда белый цвет из переменной */
+  color: var(--contact-text-main);
+
+  @include on-desktop-sm {
+    display: none;
+  }
+}
+
+.titleMobile {
+  display: none;
+  font-family: var(--font-main);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  margin: 0;
+  /* ИСПРАВЛЕНО: Теперь тут всегда белый цвет из переменной */
+  color: var(--contact-text-main);
+
+  @include on-desktop-sm {
+    display: block;
+  }
+}
+
+.iconsRow {
+  display: flex;
+  gap: 16px;
+
+  @include on-desktop-sm {
+    gap: 20px;
+  }
+}
+
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    background-color: var(--color-light);
+    transform: translateY(-3px);
+
+    /* Делаем иконки темными при наведении (на белом фоне) */
+    img {
+      filter: invert(1);
+    }
+  }
+}
+
+/* === ПРАВАЯ ЧАСТЬ (Форма) === */
+.formBlock {
+  flex: 0 0 500px;
+
+  @include on-desktop-sm {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+.formCard {
+  background: var(--contact-form-bg);
+  border: 1px solid var(--contact-form-border);
+  border-radius: 24px;
+  padding: 40px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  @include on-desktop-sm {
+    padding: 30px 20px;
+  }
+}
+
+.formTitle {
+  font-family: var(--font-main);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  /* ИСПРАВЛЕНО: Теперь заголовок формы всегда белый, чтобы читался на стекле */
+  color: var(--contact-text-main);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+%input-shared {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-family: var(--font-text);
+  outline: none;
+  transition: all 0.3s ease;
+
+  background: var(--contact-input-bg);
+  color: var(--contact-input-text);
+
+  &::placeholder {
+    color: var(--contact-input-ph);
+  }
+}
+
+.inputField {
+  @extend %input-shared;
+}
+
+.textAreaField {
+  @extend %input-shared;
+  resize: none;
+}
+
+.submitBtn {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: var(--font-main);
+  border: none;
+  border-radius: 9999px;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #E0E6EB;
+  }
+}
+
+.policyLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.checkbox {
+  margin-top: 2px;
+  accent-color: var(--primary-brand);
+}
+
+.policyText {
+  font-family: var(--font-text);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+
+  @include on-desktop-sm {
+    font-size: 9px;
+  }
+}

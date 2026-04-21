@@ -1,0 +1,184 @@
+@use '@/shared/styles/_mixins.scss' as *;
+
+.section {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  padding: 120px 0;
+
+  @include on-desktop-sm {
+    padding: 80px 0;
+  }
+}
+
+.container {
+  max-width: 1488px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  margin-bottom: 80px;
+
+  @include on-desktop-sm {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-family: var(--font-main) !important;
+  font-weight: 700;
+  font-size: 58px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  color: var(--text-main) !important;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+
+  @include on-desktop-sm {
+    font-size: 36px;
+  }
+}
+
+.subtitle {
+  font-family: var(--font-text) !important;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--primary-brand) !important;
+  max-width: 1060px;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 1;
+
+  [data-theme='dark'] & {
+    color: var(--text-secondary) !important;
+  }
+}
+
+.scrollContainer {
+  @include on-mobile {
+    overflow-x: auto;
+    margin-right: -24px;
+    padding: 0 24px 20px 0;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.grid {
+  /* ИСПРАВЛЕНИЕ: Переходим на Grid для идеальных рядов */
+  display: grid;
+  /* Строго 4 колонки по 330px */
+  grid-template-columns: repeat(4, 330px);
+  gap: 40px;
+  justify-content: center;
+  /* Центрируем всю сетку */
+
+  @include on-section-lg {
+    /* Если 4 не влезают, делаем 3 в ряд */
+    grid-template-columns: repeat(3, 330px);
+  }
+
+  @include on-desktop-lg {
+    /* На планшетах 2 в ряд */
+    grid-template-columns: repeat(2, 330px);
+  }
+
+  @include on-mobile {
+    /* На мобилке возвращаем Flex для горизонтального скролла */
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    width: max-content;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+
+  /* Ширина теперь контролируется гридом (330px), но мы задаем 100%, 
+     чтобы она слушалась родителя */
+  width: 100%;
+  min-height: 350px;
+  box-sizing: border-box;
+
+  background: #F9FAFB;
+  border: 1px solid rgba(17, 39, 59, 0.05);
+
+  [data-theme='dark'] & {
+    background: #2a2d30;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(17, 39, 59, 0.08);
+    border-color: var(--primary-brand);
+
+    [data-theme='dark'] & {
+      background: #323639;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @include on-mobile {
+    /* На мобилке в скролле нужна жесткая ширина */
+    width: 280px;
+    min-height: auto;
+  }
+}
+
+.iconWrapper {
+  margin-bottom: 60px;
+  width: 66px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  [data-theme='dark'] & {
+    img {
+      filter: invert(1) brightness(2);
+    }
+  }
+}
+
+.cardTitle {
+  font-family: var(--font-main) !important;
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: var(--text-main) !important;
+  line-height: 1.2;
+
+  [data-theme='dark'] & {
+    color: #ffffff !important;
+  }
+}
+
+.cardDesc {
+  font-family: var(--font-text) !important;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--primary-brand) !important;
+  opacity: 1;
+
+  [data-theme='dark'] & {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+}

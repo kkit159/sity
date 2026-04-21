@@ -1,0 +1,186 @@
+@use '@/app/styles/index.scss' as *;
+
+.section {
+  width: 100%;
+  position: relative;
+  padding: clamp(60px, 8vw, 120px) 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.roadmapContent {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.stepsColumn {
+  max-width: 750px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.mainTitle {
+  font-family: var(--font-main);
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--text-main);
+  margin: 0 0 clamp(40px, 5vw, 60px) 0;
+  transition: color 0.3s ease;
+}
+
+.timeline {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    bottom: 20px;
+    left: 24px;
+    width: 2px;
+    background-color: rgba(68, 96, 122, 0.25);
+    z-index: 1;
+    transition: background-color 0.3s ease;
+
+    [data-theme='dark'] & {
+      background-color: rgba(249, 250, 251, 0.25);
+    }
+  }
+}
+
+.stepItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: clamp(40px, 5vw, 50px);
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .numberCircle {
+    width: 20px;
+    height: 20px;
+    background-color: #44607A;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 0;
+    flex-shrink: 0;
+    margin-left: 15px;
+    margin-right: 45px;
+    margin-top: 4px;
+    z-index: 2;
+    box-shadow: 0 0 0 11px rgba(68, 96, 122, 0.25);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    [data-theme='dark'] & {
+      background-color: #F9FAFB;
+      box-shadow: 0 0 0 11px rgba(249, 250, 251, 0.15);
+    }
+  }
+
+  .stepText {
+    padding-top: 0;
+
+    h3 {
+      font-family: var(--font-text);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-main);
+      margin: 0 0 10px 0;
+      transition: color 0.3s ease;
+    }
+
+    p {
+      font-family: var(--font-text);
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--text-secondary);
+      max-width: 550px;
+      margin: 0;
+      transition: color 0.3s ease;
+      overflow-wrap: break-word;
+      hyphens: none;
+    }
+  }
+}
+
+.footerNote {
+  font-family: var(--font-text);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* --- DECOR --- */
+.decorWrapper {
+  position: absolute;
+  top: -200px;
+  right: -280px;
+  height: 800px;
+  z-index: 1;
+  pointer-events: none;
+
+  @media (max-width: 900px) {
+    position: relative;
+    top: auto;
+    right: auto;
+    height: auto;
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px auto 0;
+  }
+}
+
+.decorInner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.decorImage {
+  height: 100%;
+  width: auto;
+  display: block;
+  filter: contrast(1.02) drop-shadow(0 30px 60px rgba(0, 0, 0, 0.08));
+
+  @media (max-width: 900px) {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+}

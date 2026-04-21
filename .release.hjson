@@ -1,0 +1,10 @@
+experiments: version
+version_file_path: ./package.json
+version_files: {
+  "./package.json": '''"version": "([^"]+)",''',
+}
+dockerfile: Dockerfile
+deploy_units:
+box:
+image:
+project: infradev

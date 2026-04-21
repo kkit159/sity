@@ -1,0 +1,235 @@
+@use '@/shared/styles/_mixins.scss' as *;
+
+/* Переменные удалены — теперь всё тянется из src/app/styles/index.scss */
+
+.modalRoot {
+    :global {
+        .ant-modal-content {
+            padding: 40px !important;
+        }
+
+        .ant-form-item-label>label {
+            font-weight: 500;
+        }
+
+        .ant-input {
+            height: 48px !important;
+        }
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--modal-text-secondary);
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+        color: var(--modal-text-main);
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--modal-icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+
+    img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+    }
+}
+
+.title {
+    font-family: var(--font-main);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--modal-text-main);
+    margin: 0 0 12px 0;
+}
+
+.subtitle {
+    font-family: var(--font-text);
+    font-size: 14px;
+    color: var(--modal-text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ================= SWITCH STYLES ================= */
+.switchBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 8px 0 24px 0;
+    gap: 16px;
+}
+
+.switchInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.switchLabel {
+    font-family: var(--font-text);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--modal-text-main);
+}
+
+.switchDesc {
+    font-family: var(--font-text);
+    font-size: 11px;
+    color: var(--modal-text-secondary);
+}
+
+.customSwitch {
+    background-color: rgba(118, 120, 122, 0.3) !important;
+
+    &[aria-checked="true"] {
+        background-color: var(--switch-bg) !important;
+    }
+}
+
+.submitBtn {
+    width: 100%;
+    height: 54px !important;
+    background: var(--btn-bg) !important;
+    border: 1px solid var(--modal-border) !important;
+    border-radius: 12px !important;
+    color: var(--btn-text) !important;
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease !important;
+
+    &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        filter: brightness(1.1);
+    }
+}
+
+/* ================= АДАПТИВ (МОБИЛКА) ================= */
+@include on-mobile-sm {
+    .modalRoot {
+        :global {
+            .ant-modal-wrap {
+                display: flex !important;
+                align-items: flex-end !important;
+                justify-content: center !important;
+            }
+
+            .ant-modal {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                top: 0 !important;
+            }
+
+            .ant-modal-content {
+                padding: 32px 20px 40px 20px !important;
+                max-height: calc(100vh - 101px) !important;
+                overflow-y: auto !important;
+                scrollbar-width: none;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .dragHandle {
+        display: block;
+        width: 48px;
+        height: 4px;
+        background-color: var(--modal-text-secondary);
+        opacity: 0.3;
+        border-radius: 4px;
+        margin: -16px auto 24px auto;
+    }
+
+    .closeButton {
+        display: none;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}
+
+/* Тосты */
+.customToast {
+    :global(.ant-message-notice-content) {
+        padding: 0 !important;
+    }
+}
+
+.toastDark .toastContentInner {
+    background: rgba(45, 47, 50, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #F9FAFB;
+}
+
+.toastLight .toastContentInner {
+    background: #F9FAFB !important;
+    color: #2D455A;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.toastContentInner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-family: var(--font-text);
+    font-size: 15px;
+    font-weight: 500;
+
+    .toastIconSuccess {
+        background: #F9FAFB;
+        color: #414346;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    .toastIconError {
+        background: #FF4D4F;
+        color: #FFF;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+}

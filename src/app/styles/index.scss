@@ -1,0 +1,441 @@
+/* 1. Подключение шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@400;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+:root {
+  /* --- ПАЛИТРА (ЕДИНЫЙ ИСТОЧНИК ИСТИНЫ) --- */
+  --primary-brand: #44607A;
+  --primary-hover: #364D62;
+
+  --color-dark: #11273B;
+  --color-light: #F9FAFB;
+  --bg-dark-theme: #202326;
+
+  /* --- ШРИФТЫ --- */
+  --font-main: 'Roboto Mono', monospace;
+  --font-text: 'Martel', serif;
+
+  /* --- СЕМАНТИЧЕСКИЕ ПЕРЕМЕННЫЕ --- */
+  --bg-page: var(--color-light);
+  --bg-card: #FFFFFF;
+  --text-main: var(--color-dark);
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+
+  /* --- ДАШБОРД И МОДАЛКИ (Светлая тема) --- */
+  --dash-bg: #F4F7F9;
+  --dash-card-bg: #FFFFFF;
+  --dash-text-main: #2D455A;
+  --dash-text-secondary: #76787A;
+  --dash-border: #E7EBEE;
+  --dash-banner-bg: #E7EBEE;
+  --dash-icon-bg: #2D455A;
+  --dash-btn-bg: #2D455A;
+  --dash-btn-text: #FFFFFF;
+
+  --modal-bg: #F9FAFB;
+  --modal-mobile-bg: #F9FAFB;
+  --modal-text-main: #1F2937;
+  --modal-text-secondary: #6B7280;
+  --modal-border: rgba(31, 41, 55, 0.15);
+  --modal-icon-bg: #44607A;
+  --modal-divider: rgba(31, 41, 55, 0.1);
+  --switch-bg: #48BB78;
+
+  /* --- ГРАДИЕНТЫ ДЛЯ ЛЕНДИНГА (Светлая тема) --- */
+  --pricing-grad-0: #F9FAFB;
+  --pricing-grad-27: #E8EBEE;
+  --pricing-grad-51: #E0E6EB;
+  --pricing-grad-78: #EAEDF0;
+  --pricing-grad-100: #F9FAFB;
+
+  /* --- ВИДЖЕТ: КАРТОЧКИ ТАРИФОВ (Светлая тема) --- */
+  --pricing-card-bg: var(--bg-card);
+  --pricing-card-rec-bg: linear-gradient(180deg, #F9FAFB 0%, #6B86A1 100%);
+  --pricing-badge-bg: var(--primary-brand);
+  --pricing-badge-text: #FFFFFF;
+  --pricing-desc-color: var(--primary-brand);
+  --pricing-tab-text: var(--text-secondary);
+  --pricing-tab-active: var(--primary-brand);
+  --pricing-link-hover: var(--primary-brand);
+  --pricing-mob-title-bg: transparent;
+
+  /* --- ВИДЖЕТ: ТАБЛИЦА СРАВНЕНИЯ (Светлая тема) --- */
+  --table-line: #CCD4DB;
+  --table-header-bg: #CCD4DB;
+  --table-header-hover: #B8C3CC;
+  --table-row-hover: rgba(204, 212, 219, 0.15);
+  --table-plan-title: #7A8B9B;
+  --table-text-desc: var(--primary-brand);
+  --table-bg: var(--bg-card);
+  --table-shadow: 0 10px 40px rgba(17, 39, 59, 0.05);
+
+  /* --- ВИДЖЕТ: ПРОМО БЛОК 10% (Светлая тема) --- */
+  --promo-bg-start: #2B4B68;
+  --promo-bg-end: #43719C;
+  --promo-text-main: #FFFFFF;
+  --promo-text-desc: rgba(255, 255, 255, 0.9);
+  --promo-btn-bg: #FFFFFF;
+  --promo-btn-text: #11273B;
+  --promo-btn-hover: #F0F4F8;
+  --promo-pill-bg: rgba(249, 250, 251, 0.25);
+  --promo-pill-border: rgba(255, 255, 255, 0.4);
+  --promo-pill-small-bg: rgba(249, 250, 251, 0.05);
+  --promo-pill-small-border: rgba(255, 255, 255, 0.15);
+  --promo-pill-small-text: rgba(255, 255, 255, 0.4);
+
+  /* --- ВИДЖЕТ: ОТЗЫВЫ (Светлая тема) --- */
+  --review-card-bg: #F4F5F7;
+  --review-card-active-bg: #FFFFFF;
+  --review-card-border: transparent;
+  --review-card-active-border: rgba(0, 0, 0, 0.08);
+  --review-card-shadow: none;
+  --review-card-active-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+
+  /* --- ВИДЖЕТ: ФОРМА КОНТАКТОВ (Светлая тема) --- */
+  --contact-bg: linear-gradient(90deg, #3B5B78 0%, #4D7392 100%);
+  --contact-text-main: #FFFFFF;
+  --contact-title-color: #11273B;
+  --contact-form-bg: rgba(255, 255, 255, 0.15);
+  --contact-form-border: rgba(255, 255, 255, 0.2);
+  --contact-input-bg: #FFFFFF;
+  --contact-input-text: #11273B;
+  --contact-input-ph: #8895A3;
+
+  /* --- ВИДЖЕТ: ПОДВАЛ (Светлая тема) --- */
+  --footer-text: var(--color-dark);
+  --footer-hover: var(--primary-brand);
+
+  /* --- ВИДЖЕТ: ШАПКА (Светлая тема) --- */
+  --header-bg: #506E89;
+  --header-text: #F9FAFB;
+  --header-control-bg: rgba(249, 250, 251, 0.9);
+  --header-control-text: #11273B;
+  --header-profile-bg: #F9FAFB;
+  --header-profile-text: #44607A;
+  --header-menu-bg: #FFFFFF;
+  --header-menu-text: #11273B;
+  --header-menu-hover: #506E89;
+  --header-toggle-icon: #FFFFFF;
+}
+
+[data-theme='dark'] {
+  /* --- ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ ТЕМНОЙ ТЕМЫ --- */
+  --bg-page: var(--bg-dark-theme);
+  --bg-card: #2C3843;
+  --text-main: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --border-color: #4B5563;
+
+  /* --- ДАШБОРД И МОДАЛКИ (Темная тема) --- */
+  --dash-bg: #202326;
+  --dash-card-bg: #56595B;
+  --dash-text-main: #F9FAFB;
+  --dash-text-secondary: rgba(249, 250, 251, 0.7);
+  --dash-border: rgba(255, 255, 255, 0.05);
+  --dash-banner-bg: #414346;
+  --dash-icon-bg: #D0D1D3;
+  --dash-btn-bg: rgba(93, 94, 97, 0.85);
+  --dash-btn-text: #F9FAFB;
+
+  --modal-bg: #202326;
+  --modal-mobile-bg: #585B5D;
+  --modal-text-main: #F9FAFB;
+  --modal-text-secondary: rgba(249, 250, 251, 0.7);
+  --modal-border: rgba(249, 250, 251, 0.2);
+  --modal-icon-bg: rgba(249, 250, 251, 0.1);
+  --modal-divider: rgba(249, 250, 251, 0.15);
+  --switch-bg: #48BB78;
+
+  /* --- ГРАДИЕНТЫ ДЛЯ ЛЕНДИНГА (Темная тема) --- */
+  --pricing-grad-0: #202326;
+  --pricing-grad-27: #262E35;
+  --pricing-grad-51: #2C3843;
+  --pricing-grad-78: #262E35;
+  --pricing-grad-100: #202326;
+
+  /* --- ВИДЖЕТ: КАРТОЧКИ ТАРИФОВ (Темная тема) --- */
+  --pricing-card-bg: var(--bg-card);
+  --pricing-card-rec-bg: linear-gradient(180deg, #2C3843 0%, #1A2835 100%);
+  --pricing-badge-bg: var(--primary-brand);
+  --pricing-badge-text: #FFFFFF;
+  --pricing-desc-color: var(--text-main);
+  --pricing-tab-text: var(--text-secondary);
+  --pricing-tab-active: var(--text-main);
+  --pricing-link-hover: var(--text-main);
+  --pricing-mob-title-bg: rgba(249, 250, 251, 0.1);
+
+  /* --- ВИДЖЕТ: ТАБЛИЦА СРАВНЕНИЯ (Темная тема) --- */
+  --table-line: #56595B;
+  --table-header-bg: #56595B;
+  --table-header-hover: #4A4D4F;
+  --table-row-hover: rgba(86, 89, 91, 0.15);
+  --table-plan-title: #CCD4DB;
+  --table-text-desc: #CCD4DB;
+  --table-bg: transparent;
+  --table-shadow: none;
+
+  /* --- ВИДЖЕТ: ПРОМО БЛОК 10% (Темная тема) --- */
+  --promo-bg-start: #202326;
+  --promo-bg-end: #4D6474;
+
+  /* --- ВИДЖЕТ: ОТЗЫВЫ (Темная тема) --- */
+  --review-card-bg: #2b323d;
+  --review-card-active-bg: #384250;
+  --review-card-border: transparent;
+  --review-card-active-border: rgba(255, 255, 255, 0.1);
+  --review-card-shadow: none;
+  --review-card-active-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+
+  /* --- ВИДЖЕТ: ФОРМА КОНТАКТОВ (Темная тема) --- */
+  --contact-bg: linear-gradient(180deg, #1C252E 0%, #2A3642 100%);
+  --contact-text-main: #FFFFFF;
+  --contact-title-color: #FFFFFF;
+  --contact-form-bg: rgba(255, 255, 255, 0.05);
+  --contact-form-border: rgba(255, 255, 255, 0.1);
+  --contact-input-bg: rgba(255, 255, 255, 0.1);
+  --contact-input-text: #FFFFFF;
+  --contact-input-ph: rgba(255, 255, 255, 0.5);
+
+  /* --- ВИДЖЕТ: ПОДВАЛ (Темная тема) --- */
+  --footer-text: var(--color-light);
+  --footer-hover: var(--primary-brand);
+
+  /* --- ВИДЖЕТ: ШАПКА (Темная тема) --- */
+  --header-bg: #202326;
+  --header-text: #F9FAFB;
+  --header-control-bg: rgba(249, 250, 251, 0.1);
+  --header-control-text: #F9FAFB;
+  --header-profile-bg: #F9FAFB;
+  --header-profile-text: #44607A;
+  --header-menu-bg: #2C3843;
+  --header-menu-text: #F9FAFB;
+  --header-menu-hover: #FFFFFF;
+  --header-toggle-icon: #415464;
+}
+
+/* --- ГЛОБАЛЬНЫЕ СТИЛИ --- */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-text);
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+#root,
+#__next {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Переопределяем шрифты Ant Design */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.ant-typography {
+  box-shadow: none !important;
+  text-shadow: none !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: none !important;
+  }
+}
+
+/* --- УТИЛИТЫ АДАПТИВНОСТИ --- */
+.desktop-only {
+  display: none !important;
+
+  @media (min-width: 992px) {
+    display: flex !important;
+  }
+}
+
+.mobile-only {
+  display: flex !important;
+
+  @media (min-width: 992px) {
+    display: none !important;
+  }
+}
+
+/* --- СТИЛИ ДЛЯ ЖИДКОГО СТЕКЛА В ШАПКЕ --- */
+.glass-pill {
+  background-color: rgba(136, 150, 163, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.glass-pill:hover {
+  background-color: rgba(136, 150, 163, 0.6);
+  color: #FFFFFF;
+}
+
+/* ========================================== */
+/* === ГЛОБАЛЬНЫЙ КОМПОНЕНТ: ЧАСЫ (CLOCK) === */
+/* ========================================== */
+
+.global-clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%;
+  height: 35%;
+  z-index: 5;
+
+  @media (max-width: 900px) {
+    top: 50% !important;
+    left: 48% !important;
+    width: 65% !important;
+    height: 65% !important;
+  }
+
+  .markerContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 2px);
+    width: 4px;
+    transform-origin: center center;
+
+    @media (max-width: 900px) {
+      left: calc(50% - 1px);
+      width: 2px;
+    }
+  }
+
+  .markerLine {
+    width: 3px;
+    height: 20px;
+    border-radius: 2px;
+    background: #ffffff;
+    opacity: 0.9;
+    box-shadow: 0 1px 4px rgba(17, 39, 59, 0.25);
+
+    @media (max-width: 900px) {
+      width: 2px;
+      height: 12px;
+    }
+  }
+
+  .quarterMarker {
+    height: 35px;
+    width: 5px;
+    opacity: 1;
+
+    @media (max-width: 900px) {
+      height: 20px;
+      width: 3px;
+    }
+  }
+
+  .hourHand,
+  .minuteHand,
+  .secondHand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 4px;
+    background: #ffffff;
+  }
+
+  .hourHand {
+    width: 8px;
+    height: 25%;
+    margin-left: -4px;
+    box-shadow: 0 2px 8px rgba(17, 39, 59, 0.3);
+    animation: rotateHour 43200s linear infinite;
+
+    @media (max-width: 900px) {
+      width: 4px;
+      margin-left: -2px;
+    }
+  }
+
+  .minuteHand {
+    width: 6px;
+    height: 38%;
+    margin-left: -3px;
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(17, 39, 59, 0.3);
+    animation: rotateMin 3600s linear infinite;
+
+    @media (max-width: 900px) {
+      width: 3px;
+      margin-left: -1.5px;
+    }
+  }
+
+  .secondHand {
+    width: 3px;
+    height: 44%;
+    margin-left: -1.5px;
+    box-shadow: 0 1px 4px rgba(17, 39, 59, 0.3);
+    animation: rotateSec 60s steps(60) infinite;
+
+    @media (max-width: 900px) {
+      width: 2px;
+      margin-left: -1px;
+    }
+  }
+
+  .clockCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: #ffffff;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 10px rgba(17, 39, 59, 0.4);
+
+    @media (max-width: 900px) {
+      width: 12px;
+      height: 12px;
+      border-width: 2px;
+    }
+  }
+}
+
+@keyframes rotateHour {
+  from { transform: rotate(var(--start-hour)); }
+  to { transform: rotate(calc(var(--start-hour) + 360deg)); }
+}
+
+@keyframes rotateMin {
+  from { transform: rotate(var(--start-min)); }
+  to { transform: rotate(calc(var(--start-min) + 360deg)); }
+}
+
+@keyframes rotateSec {
+  from { transform: rotate(var(--start-sec)); }
+  to { transform: rotate(calc(var(--start-sec) + 360deg)); }
+}

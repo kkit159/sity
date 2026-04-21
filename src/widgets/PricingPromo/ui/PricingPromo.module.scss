@@ -1,0 +1,160 @@
+@use '@/shared/styles/_mixins.scss' as *;
+
+.promoSection {
+  width: 100%;
+  background: linear-gradient(90deg, var(--promo-bg-start) 0%, var(--promo-bg-end) 100%);
+  height: 315px; 
+  padding-top: 63px;
+  position: relative;
+  overflow: hidden;
+  color: var(--promo-text-main);
+  border-radius: 0;
+  margin-top: 40px;
+  transition: background 0.3s ease;
+
+  @include on-desktop-sm {
+    height: auto; 
+    padding: 40px 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: flex-start; 
+  justify-content: space-between;
+  gap: 80px;
+  position: relative;
+  z-index: 2;
+
+  @include on-desktop-sm {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 20px;
+  }
+}
+
+/* --- Левый блок (Заголовок и Главная плашка) --- */
+.leftBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  font-family: var(--font-main); 
+  font-size: 40px; 
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  max-width: 500px;
+  margin: 0; 
+  color: var(--promo-text-main);
+
+  @include on-desktop-sm {
+    font-size: 28px;
+    max-width: 100%;
+  }
+}
+
+.mainPillWrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  
+  @include on-desktop-sm {
+    padding-left: 0;
+    justify-content: center;
+  }
+}
+
+// Главная плашка 10%
+.mainPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 80px;
+  border-radius: 9999px;
+  background-color: var(--promo-pill-bg);
+  border: 1px solid var(--promo-pill-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 56px;
+  font-weight: 700;
+  transform: rotate(-6deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Правый блок (Текст и кнопка) --- */
+.rightBlock {
+  flex: 0 0 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop-sm {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+.description {
+  font-family: var(--font-text);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--promo-text-desc);
+  margin: 0; 
+
+  b {
+    color: var(--promo-text-main);
+    font-weight: 700;
+  }
+}
+
+// Белая кнопка Начать
+.actionButton {
+  font-family: var(--font-main);
+  background-color: var(--promo-btn-bg);
+  color: var(--promo-btn-text);
+  border: none;
+  border-radius: 9999px;
+  padding: 18px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+
+  &:hover {
+    background-color: var(--promo-btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* --- Декоративные мелкие плашки --- */
+.pillSmall {
+  position: absolute;
+  padding: 10px 40px; 
+  border-radius: 9999px;
+  background-color: var(--promo-pill-small-bg);
+  border: 1px solid var(--promo-pill-small-border);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--promo-pill-small-text);
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+}
+
+.pillPos1 { top: 15%; left: 5%; transform: rotate(-15deg); }
+.pillPos2 { bottom: 20%; left: 15%; transform: rotate(10deg); }
+.pillPos3 { top: 40%; left: 45%; transform: rotate(-25deg); }
+.pillPos4 { bottom: 15%; left: 55%; transform: rotate(15deg); }
+.pillPos5 { top: 20%; right: 25%; transform: rotate(-5deg); }
+.pillPos6 { bottom: 25%; right: 5%; transform: rotate(20deg); }

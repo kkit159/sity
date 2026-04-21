@@ -1,0 +1,23 @@
+---
+description: Index of all project rules
+alwaysApply: true
+---
+# Project Rules Index
+
+## Core Rules
+- [confidence.mdc](.cursor/rules/confidence.mdc)
+- [language.mdc](.cursor/rules/language.mdc)
+
+## Development Guidelines
+- [react.mdc](.cursor/rules/react.mdc)
+- [typescript-type-safety.mdc](.cursor/rules/typescript-type-safety.mdc)
+- [styling-guidelines.mdc](.cursor/rules/styling-guidelines.mdc)
+- [performance-guidelines.mdc](.cursor/rules/performance-guidelines.mdc)
+
+## Project-Specific
+- [state-management.mdc](.cursor/rules/state-management.mdc)
+
+## How to Update
+1. Edit the relevant rule file
+2. Update this index when adding/removing rules
+3. Commit changes to version control

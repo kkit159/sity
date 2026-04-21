@@ -1,0 +1,221 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100%;
+}
+
+.welcomeSection {
+  position: relative;
+
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 885px;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 780px;
+  height: 100%;
+  border-radius: 80px;
+}
+
+.left {
+  align-items: center;
+  position: relative;
+  background: linear-gradient(to bottom, #081d31, #7490a4);
+}
+
+.quoteText {
+  position: absolute;
+  top: 20px;
+  width: 80%;
+  align-self: center;
+  justify-content: center;
+
+  display: flex;
+  align-items: start;
+  gap: 12px;
+
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.leftContent {
+  // flex: 1;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: center;
+  width: 100%;
+  // margin-top: auto;
+  // margin-bottom: auto;
+}
+
+.quoteLeft,
+.quoteRight {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.quoteIcon {
+  display: block;
+  width: 20px;
+  height: 24px;
+  background-image: url('@static/iconComma.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.quoteContent {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+
+  color: white;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+  width: 70%;
+  margin-top: 0;
+}
+
+.titleLine1,
+.titleLine3 {
+  display: flex;
+  align-self: flex-start;
+}
+
+.titleLine2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: 12px;
+  width: 100%;
+}
+
+.arrow {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background-color: white;
+  top: 5px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid white;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+}
+
+.right {
+  background-image: url('@static/welcomeBoard.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.howItWorksSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+
+  width: 80%;
+}
+
+.queueTypesSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+
+  width: 80%;
+  min-height: 400px;
+}
+
+.contactsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+
+  width: 80%;
+  min-height: 400px;
+}
+
+.startButton {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+
+  width: 50%;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #ffffff;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.owners {
+  position: absolute;
+  bottom: 40px;
+  width: 350px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ownersAvatars {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  &:not(:first-child) {
+    margin-left: -12px;
+  }
+}
+
+.ownersText {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+}

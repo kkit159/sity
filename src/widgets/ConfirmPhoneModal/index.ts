@@ -1,0 +1,1 @@
+export { ConfirmPhoneModal } from './ui/ConfirmPhoneModal';

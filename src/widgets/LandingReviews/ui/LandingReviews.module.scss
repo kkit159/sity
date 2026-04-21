@@ -1,0 +1,215 @@
+@use '@/shared/styles/_mixins.scss' as *;
+@use '@/app/styles/index.scss' as *;
+
+.section {
+  width: 100%;
+  position: relative;
+  padding: clamp(60px, 8vw, 120px) 0;
+  overflow: hidden;
+  background: transparent; 
+}
+
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- HEADER ПО МАКЕТУ --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-bottom: clamp(50px, 6vw, 80px);
+  gap: 40px;
+
+  @include on-desktop-m {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  h2 {
+    font-family: var(--font-main);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-main);
+    margin: 0;
+    flex: 1; 
+  }
+
+  p {
+    font-family: var(--font-text);
+    font-size: clamp(14px, 1.2vw, 15px);
+    line-height: 1.5;
+    color: var(--text-main);
+    opacity: 0.8;
+    max-width: 580px;
+    margin: 0;
+  }
+}
+
+/* --- CAROUSEL VIEWPORT --- */
+.carouselViewport {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  cursor: grab; 
+  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  padding: 40px calc(50% - 340px);
+
+  /* СОСТОЯНИЕ АКТИВНОГО СВАЙПА МЫШЬЮ */
+  &.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none; 
+    scroll-behavior: auto; 
+  }
+
+  @include on-desktop-m {
+    gap: 24px;
+    padding: 32px calc(50% - 250px); 
+  }
+
+  @include on-mobile {
+    gap: 16px;
+    padding: 24px calc(50% - 42.5vw); 
+  }
+}
+
+/* --- REVIEW CARD --- */
+.card {
+  flex: 0 0 auto;
+  width: 680px;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  cursor: pointer;
+  
+  /* ПРАВКА: Используем переменные */
+  background-color: var(--review-card-bg); 
+  border-radius: 20px;
+  padding: 48px;
+  
+  opacity: 0.35;
+  transform: scale(0.9);
+  border: 1px solid var(--review-card-border);
+  box-shadow: var(--review-card-shadow);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  user-select: none; 
+
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+    /* ПРАВКА: Используем переменные */
+    background-color: var(--review-card-active-bg);
+    border-color: var(--review-card-active-border); 
+    box-shadow: var(--review-card-active-shadow);
+  }
+
+  @include on-desktop-m {
+    width: 500px;
+    padding: 32px;
+  }
+
+  @include on-mobile {
+    width: 85vw;
+    padding: 24px;
+  }
+}
+
+/* --- CARD INNER LAYOUT --- */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+  gap: 20px;
+
+  .name {
+    font-family: var(--font-main);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .role {
+    font-family: var(--font-text);
+    font-size: 14px;
+    color: var(--text-main);
+    opacity: 0.5;
+    text-align: right;
+  }
+}
+
+.cardBody {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+
+  @include on-mobile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: var(--border-color);
+  }
+
+  .quote {
+    font-family: var(--font-text);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-main);
+    opacity: 0.85;
+    margin: 0;
+  }
+}
+
+/* --- PAGINATION DOTS --- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-main);
+    opacity: 0.2;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.activeDot {
+      opacity: 0.8;
+      transform: scale(1.3);
+    }
+
+    &:hover:not(.activeDot) {
+      opacity: 0.4;
+    }
+  }
+}

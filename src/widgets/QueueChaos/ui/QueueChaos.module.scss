@@ -1,0 +1,312 @@
+@use '@/shared/styles/_mixins.scss' as *;
+@use '@/app/styles/index.scss' as *;
+
+.chaosSection {
+  width: 100%;
+  padding: 120px 24px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.bgOverlay {
+  display: none;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header {
+  margin-bottom: 64px;
+  width: 100%;
+  text-align: left;
+}
+
+.title {
+  font-family: var(--font-main);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-dark); 
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.subtitle {
+  font-family: var(--font-text);
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--text-secondary); 
+  font-weight: 400;
+  margin: 0;
+  transition: color 0.3s ease;
+  max-width: 900px;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #14283ccc; 
+  border-radius: 20px; 
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 380px;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 32px 64px rgba(16, 32, 48, 0.24);
+    border-color: rgba(255, 255, 255, 0.1);
+    
+    .iconFront {
+      transform: scale(1.03) translateZ(0); 
+    }
+  }
+}
+
+.cardBgOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(20, 40, 60, 0.4) 0%, rgba(20, 40, 60, 0.1) 100%);
+  z-index: 1;
+  pointer-events: none; 
+}
+
+.cardTitle {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: pre-line;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.iconFront {
+  position: relative;
+  margin: auto 0;
+  width: 80px; 
+  height: 80px;
+  object-fit: contain;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.cardDesc {
+  font-family: var(--font-text);
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+  margin: auto 0 0;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.accordionSection {
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+}
+
+.faqMainTitle {
+  font-family: var(--font-main);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-dark);
+  text-transform: uppercase;
+  margin: 0 0 48px 0;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.accordionItem {
+  border-top: 1px solid rgba(17, 39, 59, 0.15); 
+  
+  &:last-child {
+    border-bottom: 1px solid rgba(17, 39, 59, 0.15);
+  }
+
+  .itemHeader {
+    display: flex;
+    padding: 32px 0; 
+    cursor: pointer;
+    align-items: center;
+
+    &:hover .stepTitle { 
+      color: var(--primary-brand); 
+    }
+  }
+
+  .number {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: clamp(20px, 3vw, 32px); 
+    width: 80px; 
+    color: var(--color-dark); 
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+  }
+
+  .stepTitle {
+    font-family: var(--font-text);
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--color-dark); 
+    flex-grow: 1;
+    transition: color 0.2s ease;
+  }
+
+  .icon {
+    font-size: 24px;
+    color: var(--color-dark);
+    transition: transform 0.3s ease;
+    &.open { 
+      transform: rotate(180deg); 
+      color: var(--primary-brand); 
+    }
+  }
+
+  .itemContent {
+    overflow: hidden; 
+  }
+
+  .inner {
+    padding: 0 0 32px 80px; 
+    font-family: var(--font-text);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-secondary); 
+    max-width: 900px; 
+    transition: color 0.3s ease;
+    hyphens: none;
+    overflow-wrap: break-word;
+  }
+}
+
+// --- АДАПТИВНОСТЬ ---
+@include on-desktop-m {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+  .title { font-size: 32px; }
+  .faqMainTitle { font-size: 28px; }
+}
+
+@include on-mobile {
+  .chaosSection {
+    padding: 80px 20px;
+  }
+  
+  .title { font-size: 28px; }
+  .subtitle { font-size: 16px; }
+
+  .grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 64px;
+  }
+  
+  .card {
+    min-height: auto;
+    padding: 32px 24px;
+  }
+
+  .iconFront { width: 64px; height: 64px; margin: 24px 0; }
+
+  .faqMainTitle { font-size: 24px; margin-bottom: 32px; }
+  
+  .accordionItem {
+    .itemHeader { padding: 24px 0; }
+    .number { font-size: 20px; width: 40px; }
+    .stepTitle { font-size: 18px; }
+    .inner { padding: 0 0 24px 0; font-size: 14px; } 
+  }
+}
+
+// --- DARK THEME OVERRIDES ---
+.chaosSection.darkTheme {
+  background: transparent;
+
+  .bgOverlay {
+    display: none;
+  }
+
+  .title, .faqMainTitle { 
+    color: var(--color-light); 
+  }
+  .subtitle { 
+    color: var(--text-secondary); 
+  }
+  
+  .card {
+    background-color: #1a1d20f2; 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 32px 64px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .cardBgOverlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+  }
+  
+  .accordionItem {
+    border-top-color: rgba(255, 255, 255, 0.1);
+    &:last-child { border-bottom-color: rgba(255, 255, 255, 0.1); }
+    
+    .number, .stepTitle, .icon { 
+      color: var(--color-light); 
+    }
+    .inner { 
+      color: var(--text-secondary); 
+    }
+  }
+}

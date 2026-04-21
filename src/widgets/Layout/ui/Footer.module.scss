@@ -1,0 +1,151 @@
+@use '@/shared/styles/_mixins.scss' as *;
+
+.footer {
+  width: 100%;
+  padding: 80px 0 40px 0;
+  position: relative;
+  z-index: 10;
+  background: transparent; 
+  color: var(--footer-text); 
+  transition: color 0.3s ease;
+}
+
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- ВЕРХНЯЯ ЧАСТЬ --- */
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.logo {
+  height: 64px;
+  width: auto;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  
+  [data-theme='dark'] & { 
+    filter: brightness(0) invert(1); 
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+
+  @include on-mobile {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  a {
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 500;
+    color: inherit; 
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--footer-hover);
+    }
+  }
+}
+
+.scrollTopBtn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid currentColor; 
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: inherit;
+
+  svg {
+    font-size: 20px;
+    color: inherit;
+  }
+
+  &:hover {
+    border-color: var(--footer-hover); 
+    color: var(--footer-hover); 
+    transform: translateY(-2px);
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: currentColor; 
+  opacity: 0.15;
+  margin-bottom: 40px;
+}
+
+/* --- НИЖНЯЯ ЧАСТЬ --- */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+
+  @include on-desktop-m {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include on-mobile {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  a, span {
+    font-family: var(--font-text);
+    font-size: 13px;
+    line-height: 1.4;
+    color: inherit; 
+    opacity: 0.8;
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  a:hover {
+    opacity: 1;
+    color: var(--footer-hover); 
+  }
+}
+
+.copyright {
+  text-align: right;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  @include on-mobile {
+    text-align: center;
+    justify-content: center;
+  }
+
+  span {
+    opacity: 0.6;
+  }
+}

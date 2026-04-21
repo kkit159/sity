@@ -1,0 +1,1 @@
+export { LandingBenefits } from './ui/LandingBenefits';

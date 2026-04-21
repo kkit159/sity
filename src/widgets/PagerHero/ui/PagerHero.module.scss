@@ -1,0 +1,434 @@
+@use '@/shared/styles/_mixins.scss' as *;
+@use '@/app/styles/index.scss' as *;
+
+.heroSection {
+  width: 100%;
+  padding: clamp(24px, 4vw, 40px) 24px;
+  position: relative;
+  z-index: 2;
+  
+  @include on-mobile {
+    padding: 0;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; 
+  
+  @include on-desktop-m {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @include on-mobile {
+    display: flex;
+    flex-direction: column-reverse; /* На мобилке правая панель с текстом уходит наверх */
+    gap: 0;
+  }
+}
+
+/* ================= ЛЕВАЯ ПАНЕЛЬ ================= */
+.leftPanel {
+  /* Убрали aspect-ratio, чтобы Grid сам тянул высоту вровень с правой колонкой */
+  width: 100%;
+  height: 100%; 
+  border-radius: 80px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden; 
+
+  @include on-desktop-m {
+    border-radius: 40px;
+    padding: 40px 20px;
+    min-height: 60vh;
+  }
+  
+  @include on-mobile {
+    width: 90vw;
+    max-width: 340px;
+    height: 90vw;
+    max-height: 340px;
+    min-height: auto;
+    margin: 64px auto 40px auto; 
+    padding: 0;
+    border-radius: 50%;
+    justify-content: flex-start;
+  }
+}
+
+.leftPanelBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  z-index: 1;
+
+  @include on-mobile {
+    transform: scale(2); /* Приближение на мобилке */
+    transform-origin: center center;
+  }
+}
+
+/* Обертка для позиционирования глобальных часов */
+.clockContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  z-index: 2;
+  pointer-events: none;
+
+  /* Переопределяем поведение .global-clock специально для этого блока */
+  :global(.global-clock) {
+    width: 100% !important;
+    height: 100% !important;
+    top: 50% !important;
+    left: 50% !important;
+  }
+
+  @include on-desktop-m {
+    transform: translate(-50%, -50%) scale(0.65);
+  }
+
+  @include on-mobile {
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+}
+
+.quoteBlock {
+  position: relative;
+  z-index: 2; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--primary-brand);
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  max-width: 320px;
+  margin-top: auto; 
+
+  [data-theme='dark'] & {
+    color: #F9FAFB;
+  }
+
+  .quoteGroup {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .quoteIcon {
+    height: 12px;
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .quoteRight {
+    transform: rotate(180deg);
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @include on-mobile {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    border-radius: 30px;
+    padding: 6px 12px; 
+    font-size: 10px; 
+    color: #ffffff;
+    margin-top: 36px;
+    margin-bottom: 0;
+    gap: 8px;
+    white-space: normal; 
+    width: 85%; 
+    max-width: 280px;
+
+    .quoteIcon {
+      height: 8px;
+    }
+
+    p {
+      font-size: 10px;
+    }
+
+    [data-theme='dark'] & {
+      color: #ffffff;
+    }
+  }
+}
+
+/* ================= ПРАВАЯ ПАНЕЛЬ ================= */
+.rightPanel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #6D889C 0%, #081D31 100%);
+  border-radius: 80px; 
+  overflow: hidden; 
+
+  @include on-desktop-m {
+    border-radius: 40px;
+    min-height: 70vh;
+  }
+  
+  @include on-mobile {
+    min-height: calc(100vh - 84px);
+    min-height: calc(100dvh - 84px);
+    border-radius: 0;
+  }
+}
+
+.rightContent {
+  width: 100%;
+  height: 100%;
+  padding: clamp(40px, 5vw, 60px) 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  color: #ffffff;
+  text-align: left; 
+
+  @include on-desktop-m {
+    padding: 40px 20px;
+  }
+
+  @include on-mobile {
+    justify-content: center;
+  }
+}
+
+/* --- Декоративные плашки --- */
+.tagsArea {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 40px 0;
+  min-height: clamp(150px, 20vh, 250px);
+  width: 100%; 
+
+  @include on-mobile {
+    flex-grow: 0;
+    margin: 40px 0;
+    min-height: auto;
+    height: auto;
+  }
+}
+
+.tagsContainer {
+  position: relative;
+  width: 100%;
+  height: 150px;
+
+  .tagItem {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-family: var(--font-text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+    
+    .dot {
+      width: 4px;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+  }
+
+  .tag1 { top: 20%; left: 5%; }
+  .tag2 { top: 60%; left: 20%; }
+  .tag3 { top: 20%; left: 50%; transform: translateX(-50%); }
+  .tag4 { top: 60%; right: 20%; }
+  .tag5 { top: 20%; right: 5%; }
+
+  @include on-mobile {
+    height: 100px;
+    .tagItem { padding: 4px 10px; font-size: 10px; }
+    .tag1 { top: 10%; left: 0%; }
+    .tag2 { top: 70%; left: 15%; }
+    .tag3 { top: 10%; left: 50%; transform: translateX(-50%); }
+    .tag4 { top: 70%; right: 15%; }
+    .tag5 { top: 10%; right: 0%; }
+  }
+}
+
+.title {
+  font-family: var(--font-main);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0 0 24px 0;
+  letter-spacing: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include on-mobile {
+    font-size: 30px;
+    margin: 0 0 16px 0;
+    white-space: normal;
+  }
+
+  .titleRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-top: 8px;
+
+    .wavyArrow {
+      color: #ffffff;
+      flex-shrink: 0;
+      width: clamp(40px, 5vw, 60px);
+
+      @include on-mobile {
+        width: 40px;
+      }
+    }
+  }
+}
+
+.mainDesc {
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.9;
+  max-width: 100%;
+  margin: 0; 
+  text-align: left;
+  hyphens: none;
+  overflow-wrap: break-word;
+
+  @include on-mobile {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+  }
+}
+
+/* --- НИЖНИЙ БЛОК ПРАВОЙ ПАНЕЛИ --- */
+.bottomArea {
+  margin-top: auto;
+  margin-bottom: 65px; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  @include on-desktop-m {
+    margin-bottom: 40px; 
+  }
+
+  @include on-mobile {
+    margin: 0;
+  }
+}
+
+.bottomDesc {
+  font-family: var(--font-text);
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.8;
+  margin: 0 0 32px 0; 
+  max-width: 580px;
+  text-align: left; 
+
+  @include on-mobile {
+    display: none; 
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start; 
+  width: 100%;
+  max-width: 580px;
+  margin: 0; 
+  
+  @include on-mobile-xs {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch; 
+  }
+}
+
+.btnPrimary, .btnSecondary {
+  flex: 1;
+  height: 48px;
+  max-width: 280px;
+  border-radius: 24px;
+  padding: 0 24px;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; 
+
+  @include on-mobile-xs {
+    width: 100%;
+    max-width: none;
+    height: auto; 
+    padding: 12.5px 20px; 
+  }
+}
+
+.btnPrimary {
+  background-color: #ffffff;
+  color: #11273B;
+  border: none;
+  
+  &:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+  }
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+  }
+}

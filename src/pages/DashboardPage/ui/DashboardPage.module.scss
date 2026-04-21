@@ -1,0 +1,735 @@
+@use '@/shared/styles/_mixins.scss' as *;
+
+.pageWrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--dash-bg);
+    transition: background-color 0.3s ease;
+
+    &:global {
+
+        :has(&)~footer,
+        :has(&)~.ant-layout-footer {
+            display: none !important;
+        }
+    }
+}
+
+// Запасной вариант для старых браузеров (железобетонный)
+:global {
+    body:has(.DashboardPage_pageWrapper__uniqueId) footer {
+        display: none !important;
+    }
+
+    [class*="pageWrapper"]~footer,
+    [class*="pageWrapper"]~[class*="footer"] {
+        display: none !important;
+    }
+}
+
+.banner {
+    width: 100%;
+    background-color: var(--dash-banner-bg);
+    padding: 48px 24px;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.bannerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.bannerTitle {
+    font-family: var(--font-main);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--dash-text-main);
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.bannerSubtitle {
+    font-family: var(--font-text);
+    font-size: 14px;
+    color: var(--dash-text-secondary);
+    margin: 0;
+}
+
+.addCompanyBtn {
+    background-color: var(--dash-btn-bg) !important;
+    border: none !important;
+    color: var(--dash-btn-text) !important;
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: 15px;
+    padding: 15.5px 85px !important;
+    border-radius: 80px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
+.cabinetSection {
+    padding: 48px 24px;
+}
+
+.cabinetHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.cabinetTitle {
+    font-family: var(--font-main);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dash-text-main);
+    margin: 0;
+}
+
+.companySelect {
+    width: 240px;
+}
+
+.pointsCard {
+    border-radius: 40px;
+    background-color: var(--dash-card-bg);
+    border: 1px solid var(--dash-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-bottom: 48px;
+}
+
+.cardHeader {
+    margin: 0 40px;
+    padding: 24px 0 16px;
+    border-bottom: 1px solid var(--dash-border);
+}
+
+.cardTitle {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dash-text-main);
+    margin: 0;
+}
+
+.cardBody {
+    padding: 64px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.emptyText {
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dash-text-main);
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+.statsHeader {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.statsTitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dash-text-main);
+    margin: 0;
+}
+
+.mobileText {
+    display: none;
+}
+
+.desktopText {
+    display: inline;
+}
+
+.datePickerWrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.dateRangeInner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--dash-border) !important;
+    padding-bottom: 4px;
+}
+
+.customTimePicker {
+    width: 85px;
+    padding: 0 0 4px 0 !important;
+    border-bottom: 1px solid var(--dash-border) !important;
+    border-radius: 0 !important;
+
+    :global {
+        .ant-picker-input>input {
+            cursor: pointer;
+        }
+    }
+}
+
+.selectArrow {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--dash-text-secondary);
+    border-bottom: 1.5px solid var(--dash-text-secondary);
+    transform: rotate(45deg);
+    margin-bottom: 4px;
+}
+
+.calendarIcon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+
+    :global([data-theme='dark']) & {
+        filter: brightness(0) invert(1) opacity(0.7);
+    }
+}
+
+.customDatePicker {
+    padding: 0 !important;
+
+    :global {
+        .ant-picker-suffix {
+            display: none;
+        }
+
+        .ant-picker-input>input {
+            cursor: pointer;
+        }
+
+        .ant-picker-range-separator {
+            padding: 0 4px;
+        }
+    }
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+}
+
+.col4 {
+    grid-column: span 4;
+}
+
+.col6 {
+    grid-column: span 6;
+}
+
+.col12 {
+    grid-column: span 12;
+}
+
+.statCard {
+    background-color: var(--dash-card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--dash-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.topCard {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topCardInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cardLabel {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dash-text-secondary);
+}
+
+.cardValue {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dash-text-main);
+}
+
+.iconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: var(--dash-icon-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 24px;
+
+    img {
+        width: 24px;
+        height: 24px;
+
+        :global([data-theme='dark']) & {
+            filter: brightness(0.15);
+        }
+    }
+
+    :global([data-theme='dark']) & {
+        color: #202326;
+    }
+}
+
+.emptyCard {
+    height: auto;
+    min-height: 187.05px;
+    position: relative;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.gridCardTitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--dash-text-main);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.emptyContainer {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    :global {
+        .ant-empty {
+            margin: 0;
+        }
+
+        .ant-empty-image {
+            height: 40px;
+            margin-bottom: 8px;
+            opacity: 0.8;
+
+            :global([data-theme='dark']) & {
+                filter: grayscale(1) invert(1) brightness(1.5) opacity(0.25);
+            }
+
+            svg {
+                height: 100%;
+            }
+        }
+
+        .ant-empty-description {
+            font-weight: 500;
+            margin: 0;
+            opacity: 0.6;
+        }
+    }
+}
+
+.tabs {
+    display: flex;
+    gap: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dash-text-secondary);
+
+    span {
+        cursor: pointer;
+        padding-bottom: 6px;
+        transition: all 0.3s ease;
+        border-bottom: 2px solid transparent;
+        user-select: none;
+
+        &:hover {
+            color: var(--dash-text-main);
+        }
+    }
+}
+
+.activeTab {
+    color: var(--dash-text-main) !important;
+    border-bottom: 2px solid var(--dash-text-main) !important;
+}
+
+.extraText {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dash-text-secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+        color: var(--dash-text-main);
+    }
+}
+
+.cardHeaderWithTabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* ================= АДАПТИВ (МОБИЛКА) ================= */
+@include on-desktop-sm {
+
+    .col4,
+    .col6 {
+        grid-column: span 12;
+    }
+}
+
+@include on-tablet-sm {
+    .banner {
+        position: sticky !important;
+        top: 84px;
+        z-index: 900;
+        padding: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .bannerContent {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 16px;
+        width: 100%;
+
+        div {
+            width: 100%;
+        }
+    }
+
+    .bannerTitle {
+        font-size: 20px;
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .bannerSubtitle {
+        font-size: 13px;
+        margin-bottom: 0;
+        opacity: 0.8;
+    }
+
+    .addCompanyBtn {
+        width: 100%;
+        padding: 14px !important;
+        font-size: 14px;
+        border-radius: 40px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cabinetSection {
+        padding: 32px 16px;
+    }
+
+    .cabinetHeader {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .cabinetTitle {
+        font-size: 20px;
+    }
+
+    .companySelect {
+        width: 100%;
+    }
+
+    .pointsCard {
+        border-radius: 24px;
+        margin-bottom: 32px;
+    }
+
+    .cardHeader {
+        margin: 0 20px;
+        padding: 20px 0 16px;
+    }
+
+    .cardBody {
+        padding: 32px 20px;
+    }
+
+    .mobileText {
+        display: inline !important;
+    }
+
+    .desktopText {
+        display: none !important;
+    }
+
+    .statsHeader {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    .statsTitle {
+        font-size: 14px;
+        width: auto;
+        margin-bottom: 0;
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-right: auto;
+    }
+
+    .datePickerWrapper {
+        flex: 0 1 auto;
+        min-width: 0;
+        gap: 8px;
+        justify-content: flex-end;
+    }
+
+    .customTimePicker {
+        width: 55px !important;
+        flex-shrink: 0;
+    }
+
+    .dateRangeInner {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .customDatePicker {
+        width: 155px !important;
+
+        :global {
+            .ant-picker-input>input {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .ant-picker-range-separator {
+                padding: 0 2px !important;
+            }
+        }
+    }
+
+    .statsGrid {
+        gap: 16px;
+    }
+
+    .statCard {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .topCardInfo {
+        gap: 8px;
+    }
+
+    .cardLabel {
+        font-size: 14px;
+    }
+
+    .cardValue {
+        font-size: 20px;
+    }
+
+    .emptyCard {
+        height: auto;
+        min-height: 140px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gridCardTitle {
+        font-size: 16px;
+        line-height: 1.2;
+        white-space: normal;
+        overflow: visible;
+        margin-bottom: 0;
+    }
+
+    .cardHeaderWithTabs .gridCardTitle {
+        flex: 1 1 auto;
+        padding-right: 12px;
+    }
+
+    .emptyContainer {
+        flex: 1 0 auto;
+        min-height: 70px;
+        margin-top: 12px;
+    }
+
+    .extraText {
+        bottom: 16px;
+        left: 16px;
+        font-size: 12px;
+    }
+
+    .cardHeaderWithTabs {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px;
+        flex-wrap: nowrap;
+    }
+
+    .tabs {
+        width: auto;
+        justify-content: flex-end;
+        gap: 12px;
+        font-size: 12px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
+
+/* ================= ИДЕАЛЬНАЯ МОДАЛКА КАЛЕНДАРЯ НА МОБИЛЬНЫХ ================= */
+:global {
+    @include on-tablet-sm {
+        .mobile-calendar-popup {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 90vw !important;
+            max-width: 360px !important;
+            z-index: 10000 !important;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5) !important;
+            border-radius: 16px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-arrow,
+        .mobile-calendar-popup .ant-picker-range-arrow {
+            display: none !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-panel-container {
+            max-height: 80vh !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-calendar-popup .ant-picker-panel-layout,
+        .mobile-calendar-popup .ant-picker-panels,
+        .mobile-calendar-popup .ant-picker-panel,
+        .mobile-calendar-popup .ant-picker-footer {
+            display: block !important;
+            width: 100% !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-panel-layout {
+            height: auto !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-panel {
+            padding: 16px 12px !important;
+            box-sizing: border-box !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-body {
+            padding: 0 !important;
+            height: auto !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-content {
+            width: 100% !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-cell {
+            padding: 4px 0 !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-cell-inner {
+            min-width: 30px !important;
+            line-height: 30px !important;
+            margin: 0 auto !important;
+        }
+
+        .mobile-calendar-popup .ant-picker-footer {
+            box-sizing: border-box !important;
+        }
+    }
+
+    [data-theme='dark'] .mobile-calendar-popup,
+    body[data-theme='dark'] .mobile-calendar-popup,
+    html[data-theme='dark'] .mobile-calendar-popup {
+
+        .ant-picker-cell-selected .ant-picker-cell-inner,
+        .ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner,
+        .ant-picker-cell-range-start .ant-picker-cell-inner,
+        .ant-picker-cell-range-end .ant-picker-cell-inner {
+            z-index: 2;
+            position: relative;
+        }
+
+        .ant-btn-primary {
+            font-weight: 600;
+        }
+
+        .ant-picker-now-btn {
+            opacity: 0.8;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

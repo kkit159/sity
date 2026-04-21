@@ -1,0 +1,1 @@
+export { DeleteCompanyModal } from './ui/DeleteCompanyModal';

@@ -1,0 +1,1 @@
+export { PricingPromo } from './ui/PricingPromo';

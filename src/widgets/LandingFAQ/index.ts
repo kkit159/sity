@@ -1,0 +1,1 @@
+export { LandingFAQ } from './ui/LandingFAQ';

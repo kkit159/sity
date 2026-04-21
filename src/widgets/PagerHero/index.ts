@@ -1,0 +1,1 @@
+export { PagerHero } from './ui/PagerHero';

@@ -1,0 +1,1 @@
+export { QueueHero } from './ui/QueueHero'; 

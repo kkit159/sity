@@ -1,0 +1,1 @@
+export { LandingIndustries } from './ui/LandingIndustries';

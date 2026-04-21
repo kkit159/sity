@@ -1,0 +1,30 @@
+# Editors
+/.idea
+/.vscode
+
+# Misc
+.DS_Store
+.env.local
+.env.development
+# make-my-env генерирует переменные для локальной разработки и не имеет возможности настраивать путь до файла для их сохранения
+.env
+
+certs/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Items that don't need to be in a Docker image.
+# Anything not used by the build system should go here.
+Dockerfile
+.dockerignore
+.gitignore
+README.md
+
+# Artifacts that will be built during image creation.
+# This should contain all files created during `npm run build`.
+build
+node_modules
+
+*storybook.log

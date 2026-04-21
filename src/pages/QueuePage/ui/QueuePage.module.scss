@@ -1,0 +1,33 @@
+@use '@/app/styles/index.scss' as *;
+
+.pageWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  
+  // Глобальный градиент светлой темы на всю высоту страницы
+  background: linear-gradient(
+    180deg, 
+    #F9FAFB 0%, 
+    #E8EBEE 27%, 
+    #E0E6EB 51%, 
+    #EAEDF0 78%, 
+    #F9FAFB 100%
+  );
+
+  // Глобальный градиент темной темы
+  &[data-theme='dark'] {
+    background: linear-gradient(
+      180deg, 
+      #202326 0%, 
+      #2C3843 51%, 
+      #202326 100%
+    );
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}

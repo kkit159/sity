@@ -1,0 +1,1 @@
+export { LandingContact } from './ui/LandingContact';

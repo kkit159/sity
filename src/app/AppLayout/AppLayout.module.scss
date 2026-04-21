@@ -1,0 +1,29 @@
+@use '../../shared/styles/_mixins.scss' as mixins;
+@use '../../shared/styles/_constants.scss' as constants;
+
+.root {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100dvh;
+}
+
+.content {
+  // overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  width: 100%;
+  padding-top: 35px;
+
+  // max-width: constants.$max-laptop-width;
+  margin: 0 auto;
+
+  // background-color: var(--g-color-base-background);
+}
+
+.loader {
+  margin: auto;
+}

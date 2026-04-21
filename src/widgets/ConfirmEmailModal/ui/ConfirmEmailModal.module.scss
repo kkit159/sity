@@ -1,0 +1,229 @@
+@use '@/shared/styles/_mixins.scss' as *;
+@use '@/app/styles/index.scss' as *;
+
+.modalWrap {
+  @include on-mobile-sm {
+    :global(.ant-modal) {
+      margin: 16px;
+      max-width: calc(100vw - 32px);
+    }
+  }
+}
+
+.container {
+  background: var(--modal-bg);
+  border-radius: 8px;
+  padding: 56px 40px 40px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.15);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  /* GPU-композитинг для контейнера */
+  transform: translateZ(0);
+  will-change: transform;
+  transition: background 0.4s ease;
+  box-sizing: border-box;
+
+  // --- DARK THEME OVERRIDES ---
+  &.darkTheme {
+    background: var(--bg-dark-theme);
+
+    h2 { color: var(--text-main); }
+    
+    .subtitle { 
+      color: var(--text-secondary);
+      strong { color: var(--text-main); }
+    }
+    
+    .form {
+      input {
+        background: #2A2F35 !important;
+        border-color: #3B424A !important;
+        color: var(--text-main) !important;
+        &::placeholder { color: var(--text-secondary); }
+        &:focus, &:focus-within { background: #32383F !important; }
+      }
+    }
+
+    .closeIcon { 
+      color: var(--text-main); 
+      opacity: 0.5;
+      &:hover { opacity: 0.9; }
+    }
+
+    .phoneLink {
+      color: var(--text-secondary);
+      &:hover { color: var(--text-main); }
+    }
+  }
+}
+
+.iconCircle {
+  width: 88px;
+  height: 88px;
+  background-color: var(--primary-brand); 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: background-color 0.3s ease;
+
+  svg {
+    width: 44px;
+    height: 44px;
+    color: #ffffff;
+  }
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-main);
+  opacity: 0.85;
+  margin-bottom: 32px;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+  
+  strong {
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 360px;
+  text-align: left;
+
+  :global(.ant-form-item-label) {
+    padding-bottom: 4px !important;
+    label {
+      font-weight: 600;
+      &::after { display: none; }
+    }
+  }
+
+  input {
+    height: 44px; 
+    background: var(--dash-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 6px; 
+    transition: background 0.3s ease, border-color 0.3s ease;
+    box-shadow: none !important;
+
+    &:focus { 
+      background: var(--bg-card) !important; 
+      border-color: var(--primary-brand) !important;
+    }
+  }
+}
+
+.submitBtn {
+  height: 48px;
+  background: var(--primary-brand) !important;
+  font-weight: 600;
+  margin-top: 12px;
+  border-radius: 4px !important;
+  border: none !important;
+  font-size: 16px;
+  transition: background 0.3s ease !important;
+
+  &:hover {
+    background: var(--primary-hover) !important;
+  }
+}
+
+.phoneLink {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--primary-brand);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.closeIcon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-main);
+  opacity: 0.4;
+  
+  /* GPU-композитинг для иконки крестика */
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s, color 0.3s;
+  
+  &:hover { 
+    transform: scale(1.1) translateZ(0); 
+    opacity: 0.8; 
+  }
+}
+
+// ==========================================
+// MOBILE ADAPTATION
+// ==========================================
+@include on-mobile-sm {
+  .container {
+    padding: 40px 24px 32px;
+  }
+
+  .iconCircle {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .closeIcon {
+    top: 16px;
+    right: 16px;
+    font-size: 20px;
+  }
+
+  .phoneLink {
+    margin-top: 20px;
+    padding: 8px; 
+  }
+}

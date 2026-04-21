@@ -1,0 +1,448 @@
+@use '@/shared/styles/_mixins.scss' as *;
+@use '@/app/styles/index.scss' as *;
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 22px;
+  font-family: var(--font-text);
+  transition: all 0.3s ease;
+  &.dark {
+    .leftPanel {
+      background: linear-gradient(180deg, var(--bg-dark-theme) 0%, var(--bg-card) 51%, var(--bg-dark-theme) 100%);
+    }
+  }
+}
+
+/* ================= LEFT PANEL ================= */
+.leftPanel {
+  background: linear-gradient(180deg, #7490A4 0%, var(--color-dark) 100%);
+  border-radius: 80px;
+  padding: 56px 48px 56px 48px;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-light);
+  position: relative;
+  overflow: hidden;
+  min-height: 860px;
+  transition: background 0.3s ease;
+}
+
+.title {
+  font-family: var(--font-main);
+  font-size: 58px;
+  line-height: 1.15;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0 0 24px 0;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.toggleO {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  vertical-align: middle;
+  width: 2.2em;
+  height: 0.65em;
+  border: 0.06em solid var(--color-light);
+  border-radius: 1em;
+  margin: 0 0.08em;
+  padding: 0.06em;
+  box-sizing: border-box;
+  transform: translateY(-0.06em);
+
+  &Thumb {
+    width: 0.4em;
+    height: 0.4em;
+    background-color: var(--color-light);
+    border-radius: 50%;
+  }
+}
+
+.description {
+  font-family: var(--font-text);
+  font-size: 18px;
+  line-height: 1.15;
+  font-weight: 400;
+  color: var(--color-light);
+  letter-spacing: 0;
+  margin: 0 0 48px 0;
+  max-width: 520px;
+}
+
+/* --- Декоративные плашки --- */
+.tagsArea {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 32px 0;
+  width: 100%; 
+}
+
+.tagsContainer {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 150px;
+
+  .tagItem {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-family: var(--font-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+    
+    .dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--color-light);
+      border-radius: 50%;
+    }
+  }
+
+  .tag1 { top: 10%; left: 0%; }
+  .tag2 { top: 60%; left: 15%; }
+  .tag3 { top: 10%; left: 50%; transform: translateX(-50%); }
+  .tag4 { top: 60%; right: 15%; }
+  .tag5 { top: 10%; right: 0%; }
+}
+
+/* ================= BOTTOM CONTENT ================= */
+.bottomBlock {
+  width: 100%;
+  max-width: 580px;
+  flex-shrink: 0;
+}
+
+.bottomText {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-light);
+  margin: 0 0 24px 0;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.btnPrimary,
+.btnSecondary {
+  flex: 1;
+  height: 45px;
+  padding: 0 16px;
+  border-radius: 22.5px;
+  font-size: 15px;
+  font-family: var(--font-text);
+  font-weight: 600;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border: none;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: var(--color-light);
+  border: 1px solid var(--color-light);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+
+  &:hover {
+    background-color: rgba(249, 250, 251, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+/* ================= RIGHT PANEL ================= */
+.rightPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 56px 48px 48px 48px;
+  min-height: 860px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.rightPanelBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.glassDecoration {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-family: var(--font-text);
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--primary-brand);
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.quoteGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quoteIcon {
+  height: 12px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+.quoteRight {
+  transform: rotate(180deg);
+}
+
+.clockContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.clockFace {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tick {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.clockCenter {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.hourHand,
+.minuteHand,
+.secondHand {
+  position: absolute;
+  background: #fff;
+  border-radius: 4px;
+  transform-origin: bottom center;
+  bottom: 50%;
+}
+
+.hourHand {
+  width: 5px;
+  height: 84px;
+  z-index: 3;
+}
+
+.minuteHand {
+  width: 3px;
+  height: 134px;
+  z-index: 4;
+}
+
+.secondHand {
+  width: 2px;
+  height: 155px;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 2;
+}
+
+/* ================= RESPONSIVE ================= */
+@include on-desktop-m {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .rightPanel {
+    min-height: 600px;
+    padding: 32px 24px;
+  }
+
+  .glassDecoration {
+    font-size: 14px;
+    gap: 12px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .quoteIcon {
+    height: 10px;
+  }
+
+  .clockContainer {
+    transform: translate(-50%, -50%) scale(0.65);
+  }
+}
+
+/* ================= МОБИЛЬНАЯ ВЕРСИЯ ================= */
+@include on-mobile {
+  .hero {
+    padding: 0;
+    gap: 0;
+  }
+
+  .leftPanel {
+    min-height: calc(100vh - 84px);
+    min-height: calc(100dvh - 84px);
+    padding: 40px 20px;
+    border-radius: 0;
+    justify-content: center;
+  }
+
+  .tagsArea {
+    order: -1;
+    flex-grow: 0;
+    margin: 0 0 40px 0;
+  }
+
+  .tagsContainer {
+    height: 100px;
+    
+    .tagItem { 
+      padding: 4px 10px; 
+      font-size: 10px; 
+    }
+  }
+
+  .title {
+    order: 1;
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    white-space: normal;
+  }
+
+  .description {
+    order: 2;
+    font-size: 14px;
+    line-height: 1.1;
+    font-weight: 400;
+    margin: 0 0 40px 0;
+  }
+
+  .bottomBlock {
+    order: 3;
+    width: 100%;
+    margin: 0;
+  }
+
+  .bottomText {
+    display: none;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    width: auto;
+    padding: 0 8px;
+    font-size: 13px;
+    height: 40px;
+  }
+
+  .rightPanel {
+    width: 90vw;
+    max-width: 340px;
+    height: 90vw;
+    max-height: 340px;
+    min-height: auto;
+    margin: 64px auto 40px auto;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .rightPanelBg {
+    transform: scale(2);
+    transform-origin: center center;
+  }
+
+  .glassDecoration {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 6px 12px;
+    font-size: 10px;
+    color: var(--color-light);
+    margin: 36px 0;
+    gap: 4px;
+    white-space: normal;
+    text-align: center;
+    width: 85%;
+    max-width: 280px;
+  }
+
+  .quoteIcon {
+    height: 8px;
+  }
+
+  .clockContainer {
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+}
