@@ -55,6 +55,233 @@
   margin-bottom: 40px;
 }
 
+.liveMonitoringSection {
+  margin-bottom: 130px;
+  background: #f9fafb;
+  color: #2d455a;
+}
+
+.employeesSection {
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+
+/* Блок «Сотрудники» — перенос с Figma (node 1:5770) */
+.employeesCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+
+  &:has(.employeesListScroll) {
+    min-height: 549px;
+  }
+}
+
+.employeesHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(68, 96, 122, 0.25);
+  flex-shrink: 0;
+}
+
+.employeesTitle {
+  margin: 0;
+  color: #2d455a;
+  font: 600 30px/1 'Inter', sans-serif;
+}
+
+.employeesHeaderFilter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  > span {
+    color: #44607a;
+    opacity: 0.8;
+    font: 400 18px/1 'Inter', sans-serif;
+    white-space: nowrap;
+  }
+}
+
+.employeesSelect:global(.ant-select) {
+  width: 180px;
+
+  :global(.ant-select-selector) {
+    border-color: rgba(68, 96, 122, 0.25) !important;
+    border-radius: 5px !important;
+    height: 30px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+  }
+
+  :global(.ant-select-selection-item) {
+    color: #2d455a !important;
+    font: 600 14px/1 'Inter', sans-serif !important;
+  }
+
+  :global(.ant-select-selection-placeholder) {
+    color: #2d455a !important;
+    opacity: 0.65 !important;
+    font: 600 14px/1 'Inter', sans-serif !important;
+  }
+}
+
+
+.employeesListHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(68, 96, 122, 0.2);
+  color: #44607a;
+  font: 600 16px/1.2 'Inter', sans-serif;
+  opacity: 0.7;
+
+  span:last-child {
+    min-width: 100px;
+    text-align: right;
+  }
+}
+
+.employeesListScroll {
+  flex: 1;
+  margin-top: 12px;
+  max-height: 281px;
+  overflow-y: auto;
+  padding-right: 4px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(68, 96, 122, 0.1);
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #44607a;
+    border-radius: 5px;
+    min-height: 12px;
+  }
+}
+
+.employeesList {
+  :global(.ant-list-item) {
+    padding: 0 !important;
+    border: 0 !important;
+  }
+}
+
+.employeesListItem {
+  padding: 12px 0 !important;
+  border-bottom: 1px solid rgba(68, 96, 122, 0.12) !important;
+
+  &:last-child {
+    border-bottom: 0 !important;
+  }
+}
+
+.employeesRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.employeesRowMain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.employeesName {
+  color: #2d455a;
+  font: 400 18px/1.2 'Inter', sans-serif;
+}
+
+.employeesRole {
+  color: #2d455a;
+  font: 400 18px/1.2 'Inter', sans-serif;
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.employeesAvatar {
+  flex-shrink: 0;
+}
+
+.employeesAvatarPlaceholder {
+  flex-shrink: 0;
+  background: #d9d9d9 !important;
+  color: #2d455a !important;
+
+  :global(.anticon) {
+    font-size: 16px;
+  }
+}
+
+.employeesFooter {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(68, 96, 122, 0.25);
+  flex-shrink: 0;
+}
+
+.employeesFooterSplit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.employeesFooterLink {
+  padding: 0 !important;
+  height: auto !important;
+  color: #44607a !important;
+  font: 400 14px/1.2 'Inter', sans-serif !important;
+
+  &:hover {
+    color: #2d455a !important;
+  }
+
+  &:global(.ant-btn-disabled) {
+    color: #44607a !important;
+    opacity: 0.55;
+    cursor: default !important;
+  }
+
+  &:global(.ant-btn-disabled):hover {
+    color: #44607a !important;
+  }
+}
+
+/* «Добавить сотрудника» (disabled): без курсора-руки как у ссылки */
+.employeesFooterLinkStatic:global(.ant-btn.ant-btn-link) {
+  cursor: default !important;
+}
+
+.employeesFooterLinkStatic:global(.ant-btn.ant-btn-link:hover),
+.employeesFooterLinkStatic:global(.ant-btn.ant-btn-link:focus) {
+  cursor: default !important;
+}
+
+.kpiSection {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .cardHeader {
   display: flex;
   justify-content: space-between;
@@ -668,82 +895,828 @@
   border-bottom: 3px solid #2d455a;
 }
 
-.subscriptionsGrid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
-  opacity: 0.6;
+/* Подписки — Figma node 1:5837 */
+.subscriptionsCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
 
-  article {
-    border: 1px dashed rgba(68, 96, 122, 0.25);
-    border-radius: 10px;
-    padding: 20px 10px;
+.subscriptionsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(68, 96, 122, 0.25);
+  flex-shrink: 0;
+}
+
+.subscriptionsTitle {
+  margin: 0;
+  color: #2d455a;
+  font: 600 30px/1 'Inter', sans-serif;
+}
+
+.subscriptionsManageText {
+  color: #44607a;
+  font: 400 14px/1.2 'Inter', sans-serif;
+  user-select: none;
+  cursor: default;
+  white-space: nowrap;
+}
+
+/* Табы как у «Активные смены» (.shiftsTabsAnt), на всю ширину карточки */
+.subscriptionsTabsBar {
+  margin-top: 20px;
+  width: 100%;
+
+  :global(.ant-tabs-nav) {
+    margin: 0;
+    border-bottom: 2px solid rgba(68, 96, 122, 0.25);
   }
 
-  p {
-    margin: 0 0 10px;
-    color: #44607a;
-    font: 600 16px/1 'Inter', sans-serif;
-  }
-
-  strong {
+  :global(.ant-tabs-tab) {
     color: #2d455a;
-    font: 600 24px/1 'Inter', sans-serif;
+    opacity: 0.7;
+    font: 600 18px/1 'Inter', sans-serif;
+    padding: 10px 0;
+  }
+
+  :global(.ant-tabs-tab-active) {
+    opacity: 1;
+  }
+
+  :global(.ant-tabs-ink-bar) {
+    background: #2d455a;
+    height: 3px !important;
+  }
+
+  :global(.ant-tabs-content-holder) {
+    display: none;
   }
 }
 
-.kpiToolbar {
+.subscriptionsTabBody {
+  margin-top: 40px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.subscriptionsHistoryEmptyWrap {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  padding: 16px 0 32px;
+}
+
+.subscriptionsHistoryEmptyInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
   opacity: 0.5;
 }
 
-.kpiHeader {
-  margin-top: 40px;
+.subscriptionsHistoryEmptyImg {
+  display: block;
+  width: 80px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.subscriptionsHistoryEmptyText {
+  margin: 0;
+  color: #2d455a;
+  font: 400 16px/1 'Inter', sans-serif;
+  text-align: center;
+}
+
+.subscriptionsOverviewMuted {
+  opacity: 0.5;
+}
+
+.subscriptionsStatsRow {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-bottom: 2px solid rgba(68, 96, 122, 0.25);
-
-  h2 {
-    margin: 0;
-    color: #2d455a;
-    font: 600 36px/1 'Inter', sans-serif;
-  }
-}
-
-.kpiGrid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  flex-wrap: wrap;
   gap: 15px;
+  width: 100%;
 }
 
-.kpiItem {
+.subscriptionStatCard {
+  flex: 1 1 180px;
+  min-width: 0;
+  max-width: 210px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 10px;
   border: 1px dashed rgba(68, 96, 122, 0.25);
   border-radius: 10px;
-  padding: 10px;
+  background: #f9fafb;
+  box-sizing: border-box;
+}
 
-  p {
-    margin: 0;
+.subscriptionStatIcon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscriptionStatIconImg {
+  display: block;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.subscriptionStatText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.subscriptionStatLabel {
+  margin: 0;
+  color: #44607a;
+  font: 600 16px/1 'Inter', sans-serif;
+}
+
+.subscriptionStatValue {
+  margin: 0;
+  color: #2d455a;
+  font: 600 24px/1 'Inter', sans-serif;
+}
+
+.subscriptionsStateStub {
+  padding: 24px 0;
+  color: rgba(45, 69, 90, 0.55);
+  font: 400 14px/1.4 'Inter', sans-serif;
+}
+
+/* KPI-панель — вкладка «Обращения» (Figma 1:6099) */
+.kpiTopToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.kpiTopToolbarMuted {
+  opacity: 0.5;
+}
+
+.kpiToolbarFilters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.kpiFilterGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  > span {
     color: #44607a;
-    font: 600 18px/1.2 'Inter', sans-serif;
-  }
-
-  .emptyWrap {
-    margin-top: 18px;
+    opacity: 0.8;
+    font: 400 18px/1 'Inter', sans-serif;
+    white-space: nowrap;
   }
 }
 
-.chartCard {
+.kpiToolbarSelect {
+  min-width: 200px;
+
+  :global(.ant-select-selector) {
+    border-color: rgba(68, 96, 122, 0.25) !important;
+    border-radius: 5px !important;
+    height: 30px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+  }
+
+  :global(.ant-select-selection-item) {
+    color: #2d455a !important;
+    font: 600 14px/1 'Inter', sans-serif !important;
+  }
+}
+
+.kpiToolbarSelectCompare {
+  width: 155px;
+
+  :global(.ant-select-selector) {
+    border-color: rgba(68, 96, 122, 0.25) !important;
+    border-radius: 5px !important;
+    height: 30px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+  }
+
+  :global(.ant-select-selection-item) {
+    color: #2d455a !important;
+    font: 600 14px/1 'Inter', sans-serif !important;
+  }
+}
+
+.kpiSelectChevron {
+  display: block;
+  transform: rotate(-90deg);
+}
+
+/* Поле даты: «таблетка», иконка слева, одна дата (макет). */
+.kpiDatePicker {
+  min-width: 0;
+
+  :global(.ant-picker) {
+    padding: 6px 14px 6px 12px !important;
+    border: 1px solid rgba(68, 96, 122, 0.22) !important;
+    border-radius: 999px !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    min-height: 36px;
+  }
+
+  :global(.ant-picker-input > input) {
+    color: #2d455a !important;
+    font: 400 16px/1.2 'Inter', sans-serif !important;
+    padding: 0 !important;
+    text-align: left;
+  }
+
+  :global(.ant-picker-prefix) {
+    margin-inline-end: 8px;
+    margin-inline-start: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  :global(.ant-picker-suffix) {
+    display: none !important;
+  }
+}
+
+.kpiDatePickerRoot {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.kpiDatePickerPrefixIcon {
+  display: block;
+}
+
+html[data-theme='dark'] .kpiDatePicker {
+  :global(.ant-picker) {
+    border-color: rgba(249, 250, 251, 0.22) !important;
+    background: #2c3843 !important;
+  }
+
+  :global(.ant-picker-input > input) {
+    color: #f9fafb !important;
+  }
+}
+
+html[data-theme='dark'] .kpiDatePickerPrefixIcon {
+  opacity: 0.92;
+  filter: brightness(0) invert(1);
+}
+
+.kpiToolbarActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.kpiToolbarAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #44607a;
+  font: 400 16px/1.2 'Inter', sans-serif;
+  user-select: none;
+  cursor: default;
+
+  img {
+    flex-shrink: 0;
+  }
+}
+
+.kpiToolbarActionPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #2d455a;
+  font: 400 16px/1.2 'Inter', sans-serif;
+  user-select: none;
+  cursor: default;
+
+  img {
+    flex-shrink: 0;
+  }
+}
+
+.kpiUploadIcon {
+  transform: rotate(90deg);
+}
+
+.kpiTitleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 1px;
+  border-bottom: 2px solid rgba(68, 96, 122, 0.25);
+}
+
+.kpiMainTitle {
+  margin: 0;
+  margin-right: auto;
+  color: #2d455a;
+  font: 600 36px/1 'Inter', sans-serif;
+}
+
+.kpiCategoryTabsBar {
+  flex: 0 1 auto;
+  margin-left: auto;
+  min-width: 0;
+
+  :global(.ant-tabs-nav) {
+    margin: 0;
+  }
+
+  :global(.ant-tabs-nav-list) {
+    justify-content: flex-end;
+  }
+
+  :global(.ant-tabs-tab) {
+    color: #2d455a;
+    opacity: 0.7;
+    font: 600 18px/1 'Inter', sans-serif;
+    padding: 10px 0;
+  }
+
+  :global(.ant-tabs-tab-active) {
+    opacity: 1;
+  }
+
+  :global(.ant-tabs-ink-bar) {
+    background: #2d455a;
+    height: 3px !important;
+  }
+
+  :global(.ant-tabs-content-holder) {
+    display: none;
+  }
+}
+
+/* Пустое: пять колонок до 262px (Figma 1:6220); заполненное: равные доли. */
+.kpiAppealsMetricsRow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 262px));
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.kpiAppealsMetricsRowFilled {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.kpiMetricCard {
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background: #f9fafb;
+  min-height: 140px;
+  box-sizing: border-box;
+}
+
+/* Пунктир как на макете: не нативный border-dashed, а SVG (stroke-dasharray + скругление). */
+$kpi-metric-empty-dash-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Crect x='0.75' y='0.75' width='98.5' height='98.5' rx='4.2' ry='4.2' fill='none' stroke='%23d9e2ec' stroke-width='1' stroke-dasharray='10 6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+$kpi-metric-empty-dash-svg-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Crect x='0.75' y='0.75' width='98.5' height='98.5' rx='4.2' ry='4.2' fill='none' stroke='%2364748b' stroke-width='1' stroke-dasharray='10 6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+
+.kpiMetricCardEmpty {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  max-width: 262px;
+  justify-self: start;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  align-items: stretch;
+  text-align: left;
+  overflow: hidden;
+}
+
+.kpiMetricCardEmpty::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-image: $kpi-metric-empty-dash-svg;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+html[data-theme='dark'] .kpiMetricCardEmpty::before {
+  background-image: $kpi-metric-empty-dash-svg-dark;
+}
+
+.kpiMetricCardEmpty > * {
+  position: relative;
+  z-index: 1;
+}
+
+.kpiMetricCardFilled {
+  border: 1px solid rgba(68, 96, 122, 0.25);
+  align-items: flex-start;
+}
+
+.kpiMetricTitle {
+  margin: 0;
+  color: #44607a;
+  font: 600 18px/1.2 'Inter', sans-serif;
+  text-align: left;
+  width: 100%;
+}
+
+.kpiMetricCardEmpty .kpiMetricTitle {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.kpiMetricEmptyZone {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  opacity: 0.5;
+}
+
+.kpiMetricEmptyGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  width: auto;
+}
+
+.kpiMetricEmptyImg {
+  display: block;
+  object-fit: contain;
+}
+
+.kpiMetricEmptyLabel {
+  display: block;
+  margin-top: 10px;
+  color: #2d455a;
+  font: 400 10.4px/1.2 'Inter', sans-serif;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.kpiMetricValueRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.kpiMetricValue {
+  color: #2d455a;
+  font: 600 24px/1 'Inter', sans-serif;
+}
+
+.kpiMetricDeltaPositive {
+  color: #48bb78;
+  font: 400 18px/1 'Inter', sans-serif;
+}
+
+.kpiMetricDeltaNegative {
+  color: #fc8181;
+  font: 400 18px/1 'Inter', sans-serif;
+}
+
+.kpiChartsRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  width: 100%;
+}
+
+.kpiChartPanel {
   border: 1px solid rgba(68, 96, 122, 0.25);
   border-radius: 20px;
   padding: 20px 10px;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 680px;
+}
 
-  h3 {
-    margin: 0;
-    color: #2d455a;
-    font: 600 40px/1 'Inter', sans-serif;
+.kpiChartPanelFilled {
+  min-height: 420px;
+  align-items: stretch;
+}
+
+.kpiChartPanelEmpty {
+  align-items: stretch;
+  min-height: 0;
+  padding-top: 16px;
+  padding-bottom: 28px;
+}
+
+.kpiChartPanelFilled .kpiChartTitle {
+  align-self: stretch;
+  text-align: left;
+}
+
+.kpiChartPanelEmpty .kpiChartTitle {
+  width: 100%;
+  text-align: left;
+  align-self: stretch;
+}
+
+.kpiChartTitle {
+  margin: 0;
+  color: #2d455a;
+  font: 600 30px/1 'Inter', sans-serif;
+}
+
+.kpiChartEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.kpiChartEmptyColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 93px;
+  max-width: 100%;
+}
+
+.kpiChartEmptyColumn img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.kpiChartEmptyCaption {
+  margin: 10px 0 0;
+  padding: 0;
+  color: #2d455a;
+  font: 400 10.4px/1.2 'Inter', sans-serif;
+  text-align: center;
+}
+
+.kpiAreaChartWrap,
+.kpiBarChartWrap {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  min-height: 360px;
+}
+
+.kpiChartYAxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 0;
+  padding-bottom: 36px;
+  min-width: 44px;
+  color: #44607a;
+  font: 400 16px/1.2 'Inter', sans-serif;
+}
+
+.kpiAreaChartPlot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.kpiAreaChartImg {
+  display: block;
+  width: 100%;
+  max-width: 618px;
+  height: auto;
+  margin: 40px auto 0;
+  object-fit: contain;
+}
+
+.kpiChartXAxisDates,
+.kpiChartXAxisTimes {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 12px 0 0 35px;
+  color: #44607a;
+  font: 400 16px/1.2 'Inter', sans-serif;
+  overflow-x: auto;
+
+  span {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+.kpiBarChartPlot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.kpiBarsTrack {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6px;
+  height: 234px;
+  padding: 0 8px 0 35px;
+  margin-top: 40px;
+}
+
+.kpiBar {
+  flex: 1 1 20px;
+  max-width: 27px;
+  min-width: 18px;
+  background: #44607a;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Выпадающий диапазон дат (Figma 1:7728): панель вне CSS-module, класс задаётся в TSX. */
+:global {
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-panel-container {
+    border-radius: 15px !important;
+    border: 1px solid rgba(68, 96, 122, 0.15) !important;
+    box-shadow: 0 12px 36px rgba(45, 69, 90, 0.14) !important;
+    overflow: hidden;
+    background: #f9fafb !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-panel {
+    background: #f9fafb !important;
+    border: none !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-header,
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-header button {
+    color: #44607a !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-header-view button {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: #2d455a !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-content th {
+    color: #44607a !important;
+    font: 400 12px/1 'Inter', sans-serif !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell {
+    color: rgba(45, 69, 90, 0.35) !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view {
+    color: #2d455a !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown
+    .ant-picker-cell-in-view.ant-picker-cell-selected
+    .ant-picker-cell-inner,
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown
+    .ant-picker-cell-in-view.ant-picker-cell-range-start
+    .ant-picker-cell-inner,
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown
+    .ant-picker-cell-in-view.ant-picker-cell-range-end
+    .ant-picker-cell-inner {
+    background: #2d455a !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-in-range::before {
+    background: rgba(68, 96, 122, 0.12) !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-hover-start::after,
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-hover-end::after,
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-hover::after {
+    border-color: rgba(68, 96, 122, 0.35) !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+    border-color: #44607a !important;
+  }
+
+  .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-footer {
+    background: #f9fafb !important;
+    border-top: 1px solid rgba(68, 96, 122, 0.12) !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-panel-container {
+    border: 1px solid rgba(249, 250, 251, 0.22) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
+    background: #3a3f45 !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-panel {
+    background: #3a3f45 !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-header,
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-header button {
+    color: #e5e7eb !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-header-view button {
+    color: #f9fafb !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-content th {
+    color: #9ca3af !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell {
+    color: rgba(249, 250, 251, 0.28) !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view {
+    color: #f9fafb !important;
+  }
+
+  html[data-theme='dark']
+    .kpiAppealsDatePickerDropdown.ant-picker-dropdown
+    .ant-picker-cell-in-view.ant-picker-cell-selected
+    .ant-picker-cell-inner,
+  html[data-theme='dark']
+    .kpiAppealsDatePickerDropdown.ant-picker-dropdown
+    .ant-picker-cell-in-view.ant-picker-cell-range-start
+    .ant-picker-cell-inner,
+  html[data-theme='dark']
+    .kpiAppealsDatePickerDropdown.ant-picker-dropdown
+    .ant-picker-cell-in-view.ant-picker-cell-range-end
+    .ant-picker-cell-inner {
+    background: #f9fafb !important;
+    color: #202326 !important;
+    border-radius: 8px !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-in-range::before {
+    background: rgba(249, 250, 251, 0.12) !important;
+  }
+
+  html[data-theme='dark']
+    .kpiAppealsDatePickerDropdown.ant-picker-dropdown
+    .ant-picker-cell-in-view.ant-picker-cell-today
+    .ant-picker-cell-inner::before {
+    border-color: #f9fafb !important;
+  }
+
+  html[data-theme='dark'] .kpiAppealsDatePickerDropdown.ant-picker-dropdown .ant-picker-footer {
+    background: #3a3f45 !important;
+    border-top: 1px solid rgba(249, 250, 251, 0.12) !important;
   }
 }

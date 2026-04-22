@@ -18,7 +18,11 @@ export default defineConfig(({ mode }) => {
       // Вырезали checker полностью, чтобы Vite вообще не знал про ESLint
     ],
     server: {
+      // Явный IPv4: иначе на Windows Vite часто слушает только ::1,
+      // а браузер ходит на 127.0.0.1 — «не удаётся получить доступ к сайту».
+      host: '127.0.0.1',
       port: 3000,
+      strictPort: true,
       open: true,
       proxy: {
         '/api': {
