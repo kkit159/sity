@@ -13,6 +13,7 @@ import {
 } from '@ant-design/icons';
 import { Avatar, Button, Card, Col, DatePicker, Empty, List, Row, Select, Switch, Table, Tabs, Tag, Typography } from 'antd';
 import type { TableColumnsType } from 'antd';
+import { useThemeStore } from '@/app/providers/ThemeProvider';
 
 import styles from './BusinessPointsPage.module.scss';
 
@@ -20,8 +21,6 @@ type DashboardState = 'no-company' | 'company-empty' | 'filled';
 
 const hasCompany = false;
 const hasMonitoringData = false;
-const ordersInProgressIcon = 'https://www.figma.com/api/mcp/asset/475dea13-84a9-4aad-9376-9a2debb752fa';
-
 const pageState: DashboardState = !hasCompany ? 'no-company' : hasMonitoringData ? 'filled' : 'company-empty';
 
 const monitoringCardsByState: Record<
@@ -32,19 +31,19 @@ const monitoringCardsByState: Record<
     { title: 'Активные сессии', value: '0', icon: <LineChartOutlined />, muted: true },
     { title: 'Операторов на смене', value: '0', icon: <TeamOutlined />, muted: true },
     { title: 'Клиентов в очередях', value: '0', icon: <ClockCircleOutlined />, muted: true },
-    { title: 'Заказов в процессе', value: '0', icon: <ShoppingCartOutlined />, muted: true, imageSrc: ordersInProgressIcon },
+    { title: 'Заказов в процессе', value: '0', icon: <ShoppingCartOutlined />, muted: true },
   ],
   'company-empty': [
     { title: 'Активные сессии', value: '0', icon: <LineChartOutlined /> },
     { title: 'Операторов на смене', value: '0', icon: <TeamOutlined /> },
     { title: 'Клиентов в очередях', value: '0', icon: <ClockCircleOutlined /> },
-    { title: 'Заказов в процессе', value: '0', icon: <ShoppingCartOutlined />, imageSrc: ordersInProgressIcon },
+    { title: 'Заказов в процессе', value: '0', icon: <ShoppingCartOutlined /> },
   ],
   filled: [
     { title: 'Активные сессии', value: '8 из 12', icon: <LineChartOutlined /> },
     { title: 'Операторов на смене', value: '24', icon: <TeamOutlined /> },
     { title: 'Клиентов в очередях', value: '156', icon: <ClockCircleOutlined /> },
-    { title: 'Заказов в процессе', value: '156', icon: <ShoppingCartOutlined />, imageSrc: ordersInProgressIcon },
+    { title: 'Заказов в процессе', value: '156', icon: <ShoppingCartOutlined /> },
   ],
 };
 
@@ -204,6 +203,11 @@ const KPI_CHART_X_DATES = [
   '01.04',
   '02.04',
 ] as const;
+
+const PAGE_BG_VECTOR_1 = 'https://www.figma.com/api/mcp/asset/a36fcf1d-5e60-44b9-8458-68fab18ac38c';
+const PAGE_BG_VECTOR_2 = 'https://www.figma.com/api/mcp/asset/18ee75ae-8b0c-4101-930e-5e582694ac80';
+const PAGE_BG_VECTOR_3 = 'https://www.figma.com/api/mcp/asset/2dc9b39b-51ee-4310-ab30-b4fe1403a107';
+const PAGE_BG_VECTOR_4 = 'https://www.figma.com/api/mcp/asset/2ce92b4d-3d2d-45f6-80f3-ac4ea0b636b3';
 const KPI_BAR_HEIGHTS = [12, 34, 83, 130, 130, 176, 188, 222, 240, 254, 254, 254] as const;
 const KPI_BAR_LABELS = [
   '09:00',
@@ -400,14 +404,23 @@ const EMPLOYEES_MOCK: EmployeeListItem[] = [
   { id: '6', fullName: 'Ирина Михайлова', role: 'Оператор', avatarUrl: null },
 ];
 
-const noDataSvg = (
+const renderNoDataSvg = (isDark: boolean) => (
   <svg width="180" height="116" viewBox="0 0 64 41" xmlns="http://www.w3.org/2000/svg" aria-label="Нет данных">
     <title>Нет данных</title>
     <g transform="translate(0 1)" fill="none" fillRule="evenodd">
-      <ellipse fill="#F5F5F5" cx="32" cy="33" rx="32" ry="7" />
-      <g fillRule="nonzero" stroke="#8FA3B5" strokeWidth="1.8">
-        <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z" />
-        <path d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z" fill="#FAFAFA" />
+      <ellipse fill={isDark ? 'transparent' : '#F5F5F5'} cx="32" cy="33" rx="32" ry="7" />
+      <g fillRule="nonzero" stroke={isDark ? '#F9FAFB' : '#8FA3B5'} strokeWidth="1.8">
+        <path
+          d={
+            isDark
+              ? 'M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761'
+              : 'M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z'
+          }
+        />
+        <path
+          d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+          fill={isDark ? 'transparent' : '#FAFAFA'}
+        />
       </g>
     </g>
   </svg>
@@ -598,6 +611,8 @@ const SubscriptionsSection: React.FC = () => {
 const KPI_DATE_PICKER_POPUP_CLASS = 'kpiAppealsDatePickerDropdown';
 
 export const BusinessPointsPage: React.FC = () => {
+  const theme = useThemeStore((s) => s.theme);
+  const noDataSvg = renderNoDataSvg(theme === 'dark');
   const monitoringCards = monitoringCardsByState[pageState];
   const isConnected = pageState !== 'no-company';
   const lastActionState = lastActionStateByPageState[pageState];
@@ -622,20 +637,28 @@ export const BusinessPointsPage: React.FC = () => {
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.container}>
-          <div>
-            <h1>Компания еще не добавлена</h1>
-            <p>Подключите юридическое лицо, к которому будут привязаны ваши точки</p>
-          </div>
-          <button type="button" className={styles.addCompanyBtn}>
-            Добавить компанию
-          </button>
-        </div>
-      </section>
+      <div className={styles.pageVectors} aria-hidden="true">
+        <img src={PAGE_BG_VECTOR_1} alt="" className={`${styles.pageVector} ${styles.pageVectorOne}`} />
+        <img src={PAGE_BG_VECTOR_2} alt="" className={`${styles.pageVector} ${styles.pageVectorTwo}`} />
+        <img src={PAGE_BG_VECTOR_3} alt="" className={`${styles.pageVector} ${styles.pageVectorThree}`} />
+        <img src={PAGE_BG_VECTOR_4} alt="" className={`${styles.pageVector} ${styles.pageVectorFour}`} />
+      </div>
 
-      <main className={styles.container}>
-        <section className={`${styles.card} ${styles.liveMonitoringSection}`}>
+      <div className={styles.pageContent}>
+        <section className={styles.hero}>
+          <div className={styles.container}>
+            <div>
+              <h1>Компания еще не добавлена</h1>
+              <p>Подключите юридическое лицо, к которому будут привязаны ваши точки</p>
+            </div>
+            <button type="button" className={styles.addCompanyBtn}>
+              Добавить компанию
+            </button>
+          </div>
+        </section>
+
+        <main className={styles.container}>
+          <section className={`${styles.card} ${styles.liveMonitoringSection}`}>
           <div className={styles.cardHeader}>
             <h2>Live мониторинг</h2>
             <div className={`${styles.status} ${!isConnected ? styles.statusDisconnected : ''}`}>
@@ -930,7 +953,7 @@ export const BusinessPointsPage: React.FC = () => {
           <SubscriptionsSection />
         </div>
 
-        <section className={`${styles.card} ${styles.kpiSection}`}>
+          <section className={`${styles.card} ${styles.kpiSection}`}>
           <div className={`${styles.kpiTopToolbar} ${!hasKpiTabData ? styles.kpiTopToolbarMuted : ''}`}>
             <div className={styles.kpiToolbarFilters}>
               <div className={styles.kpiFilterGroup}>
@@ -1132,8 +1155,9 @@ export const BusinessPointsPage: React.FC = () => {
               </article>
             </div>
           </>
-        </section>
-      </main>
+          </section>
+        </main>
+      </div>
     </div>
   );
 };

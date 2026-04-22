@@ -32,3 +32,5 @@ yarn-error.log*
 *storybook.log
 .vercel
 .env*.local
+
+.vercel

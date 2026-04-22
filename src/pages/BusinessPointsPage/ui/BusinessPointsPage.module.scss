@@ -2,6 +2,71 @@
   min-height: 100vh;
   background: #f9fafb;
   padding-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pageContent {
+  position: relative;
+  z-index: 1;
+}
+
+.pageVectors {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pageVector {
+  position: absolute;
+  width: auto;
+  height: auto;
+  max-width: none;
+  filter: brightness(0) saturate(100%) invert(31%) sepia(18%) saturate(772%) hue-rotate(166deg) brightness(91%) contrast(90%);
+  opacity: 0.14;
+}
+
+.pageVectorOne {
+  width: 1241.104px;
+  height: 1154px;
+  top: -15px;
+  left: auto;
+  right: -643.94px;
+  transform: rotate(-79.46deg);
+  transform-origin: center center;
+}
+
+.pageVectorTwo {
+  width: 1241.104px;
+  height: 1154px;
+  top: 250.97px;
+  left: -643.94px;
+  transform: rotate(-103.39deg);
+  transform-origin: center center;
+  object-fit: contain;
+}
+
+.pageVectorThree {
+  width: 900px;
+  top: 1450px;
+  right: -360px;
+  transform: rotate(-22deg);
+}
+
+.pageVectorFour {
+  width: 900px;
+  top: 1640px;
+  left: -520px;
+  transform: rotate(-36deg);
+}
+
+/* Светлая тема: только левый и правый векторы (44607A @ 10%, opacity 0.7) */
+.pageVectorOne,
+.pageVectorTwo {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(18%) saturate(772%) hue-rotate(166deg) brightness(91%) contrast(90%);
+  opacity: 0.7;
+  mix-blend-mode: normal;
 }
 
 .container {
@@ -753,13 +818,23 @@
   }
 
   :global(.ant-tabs-tab) {
-    color: #2d455a;
-    opacity: 0.7;
-    font: 600 18px/1 'Inter', sans-serif;
+    opacity: 1;
     padding: 10px 0;
   }
 
-  :global(.ant-tabs-tab-active) {
+  :global(.ant-tabs-tab .ant-tabs-tab-btn) {
+    color: #2d455a;
+    opacity: 0.7;
+    font: 600 18px/1 'Inter', sans-serif;
+    transition: none;
+  }
+
+  :global(.ant-tabs-tab:hover .ant-tabs-tab-btn) {
+    color: #2d455a;
+    opacity: 0.7;
+  }
+
+  :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
     opacity: 1;
   }
 
@@ -1073,7 +1148,7 @@
 }
 
 .kpiTopToolbarMuted {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .kpiToolbarFilters {
@@ -1142,24 +1217,47 @@
   min-width: 0;
 
   :global(.ant-picker) {
-    padding: 6px 14px 6px 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    width: 150px;
+    height: 30px !important;
+    min-height: 30px !important;
+    padding: 0 10px !important;
     border: 1px solid rgba(68, 96, 122, 0.22) !important;
-    border-radius: 999px !important;
+    border-radius: 10px !important;
     background: #fff !important;
     box-shadow: none !important;
-    min-height: 36px;
+  }
+
+  :global(.ant-picker:hover),
+  :global(.ant-picker-focused),
+  :global(.ant-picker:focus-within),
+  :global(.ant-picker.ant-picker-focused),
+  :global(.ant-picker.ant-picker-focused:hover),
+  :global(.ant-picker:not(.ant-picker-disabled):hover) {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  :global(.ant-picker-input) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   :global(.ant-picker-input > input) {
     color: #2d455a !important;
-    font: 400 16px/1.2 'Inter', sans-serif !important;
+    font: 400 18px/1 'Inter', sans-serif !important;
+    line-height: 1 !important;
     padding: 0 !important;
     text-align: left;
   }
 
   :global(.ant-picker-prefix) {
-    margin-inline-end: 8px;
     margin-inline-start: 0;
+    margin-inline-end: 5px;
     display: flex;
     align-items: center;
   }
@@ -1176,22 +1274,69 @@
 
 .kpiDatePickerPrefixIcon {
   display: block;
+  width: 18px;
+  height: 18px;
 }
 
 html[data-theme='dark'] .kpiDatePicker {
-  :global(.ant-picker) {
-    border-color: rgba(249, 250, 251, 0.22) !important;
-    background: #2c3843 !important;
+  :global(:where(.ant-picker-outlined)) {
+    background: #0c0d0e !important;
+    border-color: rgba(249, 250, 251, 0.25) !important;
+    box-shadow: none !important;
+  }
+
+  :global(:where(.ant-picker-outlined):hover),
+  :global(:where(.ant-picker-outlined).ant-picker-focused),
+  :global(:where(.ant-picker-outlined):focus-within) {
+    background: #202326 !important;
+    border-color: rgba(249, 250, 251, 0.25) !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  :global(.ant-picker),
+  :global(.ant-picker:hover),
+  :global(.ant-picker-focused),
+  :global(.ant-picker:focus-within),
+  :global(.ant-picker.ant-picker-focused),
+  :global(.ant-picker.ant-picker-focused:hover),
+  :global(.ant-picker:not(.ant-picker-disabled):hover) {
+    border-color: rgba(249, 250, 251, 0.25) !important;
+    background: rgba(249, 250, 251, 0.02) !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   :global(.ant-picker-input > input) {
-    color: #f9fafb !important;
+    color: rgba(249, 250, 251, 0.75) !important;
+    caret-color: rgba(249, 250, 251, 0.75);
+  }
+
+  :global(.ant-picker-clear) {
+    color: rgba(249, 250, 251, 0.55) !important;
   }
 }
 
 html[data-theme='dark'] .kpiDatePickerPrefixIcon {
-  opacity: 0.92;
+  opacity: 0.6;
   filter: brightness(0) invert(1);
+}
+
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiFilterGroup > span,
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiToolbarAction {
+  opacity: 0.8;
+}
+
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiDatePicker :global(.ant-picker),
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiDatePicker :global(.ant-picker:hover),
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiDatePicker :global(.ant-picker-focused),
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiDatePicker :global(.ant-picker:focus-within),
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiDatePicker :global(.ant-picker.ant-picker-focused),
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiDatePicker :global(.ant-picker.ant-picker-focused:hover),
+html[data-theme='dark'] .kpiTopToolbarMuted .kpiDatePicker :global(.ant-picker:not(.ant-picker-disabled):hover) {
+  background: #202326 !important;
+  border-color: rgba(249, 250, 251, 0.25) !important;
+  box-shadow: none !important;
 }
 
 .kpiToolbarActions {
@@ -1255,6 +1400,8 @@ html[data-theme='dark'] .kpiDatePickerPrefixIcon {
   flex: 0 1 auto;
   margin-left: auto;
   min-width: 0;
+  position: relative;
+  top: 2px;
 
   :global(.ant-tabs-nav) {
     margin: 0;
@@ -1311,7 +1458,7 @@ html[data-theme='dark'] .kpiDatePickerPrefixIcon {
 
 /* Пунктир как на макете: не нативный border-dashed, а SVG (stroke-dasharray + скругление). */
 $kpi-metric-empty-dash-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Crect x='0.75' y='0.75' width='98.5' height='98.5' rx='4.2' ry='4.2' fill='none' stroke='%23d9e2ec' stroke-width='1' stroke-dasharray='10 6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
-$kpi-metric-empty-dash-svg-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Crect x='0.75' y='0.75' width='98.5' height='98.5' rx='4.2' ry='4.2' fill='none' stroke='%2364748b' stroke-width='1' stroke-dasharray='10 6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
+$kpi-metric-empty-dash-svg-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Crect x='0.75' y='0.75' width='98.5' height='98.5' rx='4.2' ry='4.2' fill='none' stroke='%23f9fafb' stroke-opacity='0.25' stroke-width='1' stroke-dasharray='10 6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
 
 .kpiMetricCardEmpty {
   position: relative;
@@ -1325,6 +1472,7 @@ $kpi-metric-empty-dash-svg-dark: url("data:image/svg+xml,%3Csvg xmlns='http://ww
   align-items: stretch;
   text-align: left;
   overflow: hidden;
+  gap: 0;
 }
 
 .kpiMetricCardEmpty::before {
@@ -1364,16 +1512,18 @@ html[data-theme='dark'] .kpiMetricCardEmpty::before {
 .kpiMetricCardEmpty .kpiMetricTitle {
   margin-bottom: 0;
   text-align: left;
+  min-height: 44px;
 }
 
 .kpiMetricEmptyZone {
   display: flex;
   flex: 1;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   width: 100%;
   min-height: 0;
   opacity: 0.5;
+  padding-top: 8px;
 }
 
 .kpiMetricEmptyGrid {
@@ -1392,7 +1542,7 @@ html[data-theme='dark'] .kpiMetricCardEmpty::before {
 
 .kpiMetricEmptyLabel {
   display: block;
-  margin-top: 10px;
+  margin-top: 4px;
   color: #2d455a;
   font: 400 10.4px/1.2 'Inter', sans-serif;
   line-height: 1.2;
@@ -1496,10 +1646,10 @@ html[data-theme='dark'] .kpiMetricCardEmpty::before {
 }
 
 .kpiChartEmptyCaption {
-  margin: 10px 0 0;
+  margin: 4px 0 0;
   padding: 0;
   color: #2d455a;
-  font: 400 10.4px/1.2 'Inter', sans-serif;
+  font: 400 16px/1.2 'Inter', sans-serif;
   text-align: center;
 }
 
@@ -1719,4 +1869,790 @@ html[data-theme='dark'] .kpiMetricCardEmpty::before {
     background: #3a3f45 !important;
     border-top: 1px solid rgba(249, 250, 251, 0.12) !important;
   }
+}
+
+/* -----------------------------------------------------------------------------
+   Тёмная тема — «Бизнес-точки». Палитра как в index.tsx (Ant dark + variables).
+   Светлые правила выше не меняются.
+   ----------------------------------------------------------------------------- */
+
+html[data-theme='dark'] {
+  .page {
+    background: #202326;
+  }
+
+  .pageVector {
+    filter: none;
+    opacity: 0.18;
+  }
+
+  /* Figma 1:5506 — темная тема, левый вектор */
+  .pageVectorTwo {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%) contrast(96%);
+    opacity: 0.7;
+    mix-blend-mode: normal;
+  }
+
+  .pageVectorOne {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%) contrast(96%);
+    opacity: 0.7;
+    mix-blend-mode: normal;
+  }
+
+  /* Hero + CTA — Figma 1:5528, 1:5532 */
+  .hero {
+    background: rgba(249, 250, 251, 0.15);
+
+    h1 {
+      color: #f9fafb;
+    }
+
+    p {
+      color: rgba(249, 250, 251, 0.75);
+    }
+  }
+
+  .addCompanyBtn {
+    border: 1px solid rgba(249, 250, 251, 0.5);
+    background: rgba(249, 250, 251, 0.25);
+    color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    width: 370px;
+    height: 55px;
+    font: 400 20px/1.2 'Inter', sans-serif;
+    text-align: left;
+
+    &:hover {
+      background: rgba(249, 250, 251, 0.32);
+    }
+  }
+
+  /* Общая карточка (KPI и т.д.) — Figma 1:5533 */
+  .card {
+    background: #202326;
+    color: #e5e7eb;
+    box-shadow: 4px 4px 10px rgba(68, 96, 122, 0.1), -4px -4px 10px rgba(68, 96, 122, 0.1);
+  }
+
+  /* Live-мониторинг: только секция с .card + .liveMonitoringSection (Figma 1:5516 … 1:5527) */
+  .card.liveMonitoringSection {
+    background: rgba(249, 250, 251, 0.25);
+    color: #e5e7eb;
+    box-shadow: 4px 4px 10px rgba(68, 96, 122, 0.1), -4px -4px 10px rgba(68, 96, 122, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* --- Figma 1:5522 «Данные» (метрики Live) — токены цвета --- */
+    --metric-1-5522-card-bg: #202326;
+    --metric-1-5522-border: rgba(249, 250, 251, 0.25);
+    --metric-1-5522-label: rgba(249, 250, 251, 0.75);
+    --metric-1-5522-value: #f9fafb;
+    --metric-1-5522-icon-well: rgba(249, 250, 251, 0.75);
+    --metric-1-5522-icon-well-muted: rgba(249, 250, 251, 0.75);
+    --metric-1-5522-icon-fg: hsla(214, 8%, 14%, 1);
+
+    /* I1:5522;1:5652: весь ряд с opacity 0.6 (как в макете) при приглушённых карточках */
+    .monitoringGrid:has(.metricCardMuted) {
+      opacity: 0.6;
+    }
+
+    /* «Последние действия» / «Активные смены» — фон #202326 (1:5526, 1:5527) */
+    .twoColumns .smallCard {
+      background: #202326 !important;
+      box-shadow:
+        -4px -4px 10px rgba(68, 96, 122, 0.1),
+        4px 4px 10px rgba(68, 96, 122, 0.1);
+    }
+
+    .cardHeader {
+      border-bottom-color: rgba(249, 250, 251, 0.25);
+
+      h2 {
+        color: #f9fafb;
+      }
+    }
+
+    .status {
+      color: #30da77;
+    }
+
+    .status.statusDisconnected {
+      color: #fc8181;
+    }
+
+    .statusInfoIcon {
+      color: rgba(249, 250, 251, 0.55);
+    }
+
+    /* Карточка: I1:5522;1:5652;604:6876 — bg #202326, 1px dashed, p-20, rounded-10, gap-20 */
+    .metricCard {
+      border: 1px dashed var(--metric-1-5522-border) !important;
+      border-radius: 10px;
+      background: var(--metric-1-5522-card-bg) !important;
+      box-shadow: none !important;
+      color: var(--metric-1-5522-value);
+
+      &:global(.ant-card) {
+        background: var(--metric-1-5522-card-bg) !important;
+        color: var(--metric-1-5522-value);
+      }
+
+      &:global(.ant-card.ant-card-bordered) {
+        border: 1px dashed var(--metric-1-5522-border) !important;
+      }
+
+      :global(.ant-card-body) {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        background: transparent !important;
+      }
+
+      /* Правая колонка: в макете flex-col gap-[20px] между подписью и значением */
+      :global(.ant-card-body > div:last-child) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        min-width: 0;
+      }
+    }
+
+    .metricCard.metricCardMuted {
+      opacity: 1;
+    }
+
+    /* I1:5522;1:5652;604:6877 — ячейка иконки */
+    .metricIcon {
+      position: relative;
+      flex-shrink: 0;
+      width: 73px;
+      height: 73px;
+      border-radius: 12px;
+      background-color: var(--metric-1-5522-icon-well);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 12px 12px 11px 11px;
+      box-sizing: border-box;
+      color: var(--metric-1-5522-icon-fg);
+      font-size: 50px;
+      line-height: 1;
+
+      :global(.anticon) {
+        color: var(--metric-1-5522-icon-fg);
+      }
+
+      .metricIconImage {
+        width: 50px;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+        opacity: 0.92;
+      }
+    }
+
+    .metricIconMuted {
+      background-color: var(--metric-1-5522-icon-well-muted);
+      color: var(--metric-1-5522-icon-fg);
+
+      :global(.anticon) {
+        color: var(--metric-1-5522-icon-fg);
+      }
+
+      .metricIconImage {
+        opacity: 0.88;
+      }
+    }
+
+    /* I1:5522;1:5652;604:6882 — Inter 18 semibold, rgba(249,250,251,0.75) */
+    .metricTitle,
+    .metricTitle:global(.ant-typography) {
+      margin-bottom: 0 !important;
+      color: var(--metric-1-5522-label) !important;
+      font: 600 18px/1 'Inter', sans-serif !important;
+      letter-spacing: 0;
+    }
+
+    /* I1:5522;1:5652;604:6884 — Inter 24 semibold, #f9fafb */
+    .metricValue,
+    .metricValue:global(.ant-typography) {
+      color: var(--metric-1-5522-value) !important;
+      font: 600 24px/1 'Inter', sans-serif !important;
+      letter-spacing: 0;
+    }
+
+    /* Figma 1:5524 «Мои бт»: фон #202326, border solid 15% */
+    .businessPointsCard {
+      border-color: rgba(249, 250, 251, 0.15);
+      background: #202326;
+    }
+
+    .rowHeader {
+      border-bottom-color: rgba(249, 250, 251, 0.25);
+
+      h3 {
+        color: rgba(249, 250, 251, 0.75) !important;
+      }
+
+      button {
+        color: rgba(249, 250, 251, 0.55);
+      }
+    }
+
+    .businessPointsCard .rowHeader h3 {
+      color: #f9fafb !important;
+    }
+
+    .smallCard .rowHeader h3 {
+      color: rgba(249, 250, 251, 0.75) !important;
+    }
+
+    .rowHeaderStaticAction {
+      color: rgba(249, 250, 251, 0.55);
+    }
+
+    .addBusinessPointBtn {
+      color: rgba(249, 250, 251, 0.55);
+    }
+
+    /* Figma I1:5524;1:5756: #f9fafb, opacity 0.7 */
+    .centerEmpty {
+      color: #f9fafb;
+      opacity: 0.7;
+    }
+
+    .bpFilterItem span {
+      color: rgba(249, 250, 251, 0.75);
+    }
+
+    .bpFilterSwitch {
+      color: rgba(249, 250, 251, 0.75);
+    }
+
+    .bpFilterItem :global(.ant-select-selector),
+    .bpFilterSwitch :global(.ant-select-selector) {
+      border-color: rgba(249, 250, 251, 0.25) !important;
+      background: #202326 !important;
+    }
+
+    .bpFilterItem :global(.ant-select-selection-item),
+    .bpFilterItem :global(.ant-select-selection-placeholder),
+    .bpFilterSwitch :global(.ant-select-selection-item),
+    .bpFilterSwitch :global(.ant-select-selection-placeholder) {
+      color: #f9fafb !important;
+    }
+
+    .bpTable {
+      :global(.ant-table-thead > tr > th) {
+        color: rgba(249, 250, 251, 0.65);
+        border-bottom-color: rgba(249, 250, 251, 0.15);
+      }
+
+      :global(.ant-table-tbody > tr > td) {
+        color: #e5e7eb;
+      }
+
+      :global(.ant-table-tbody > tr:hover > td) {
+        background: rgba(249, 250, 251, 0.06) !important;
+      }
+    }
+
+    .bpName {
+      color: #f9fafb;
+    }
+
+    .bpAddress {
+      color: rgba(249, 250, 251, 0.55);
+    }
+
+    .filterRow,
+    .actionFilterRow > span {
+      color: rgba(249, 250, 251, 0.75);
+    }
+
+    .actionSelect :global(.ant-select-selector),
+    .actionSelectSmall :global(.ant-select-selector) {
+      border-color: rgba(249, 250, 251, 0.25) !important;
+      background: #202326 !important;
+    }
+
+    .actionSelect :global(.ant-select-selection-item),
+    .actionSelect :global(.ant-select-selection-placeholder),
+    .actionSelectSmall :global(.ant-select-selection-item),
+    .actionSelectSmall :global(.ant-select-selection-placeholder) {
+      color: #f9fafb !important;
+    }
+
+    .actionSelect :global(.ant-select-arrow),
+    .actionSelectSmall :global(.ant-select-arrow) {
+      color: rgba(156, 163, 175, 0.9) !important;
+    }
+
+    .actionListItem {
+      border-color: rgba(249, 250, 251, 0.12) !important;
+      background: rgba(24, 26, 28, 0.35);
+    }
+
+    .actionTitle {
+      color: #f9fafb;
+    }
+
+    .actionSubtitle {
+      color: rgba(249, 250, 251, 0.55);
+    }
+
+    .actionTime {
+      color: rgba(249, 250, 251, 0.55);
+    }
+
+    .actionsScrollWrap {
+      &::-webkit-scrollbar-track {
+        background: rgba(249, 250, 251, 0.06);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(249, 250, 251, 0.35);
+      }
+    }
+
+    /* Figma 1:5527 — переключатель «Активные / Перерыв» */
+    .shiftsTabsAnt :global(.ant-tabs-tab) {
+      padding: 10px 0;
+      opacity: 1;
+    }
+
+    .shiftsTabsAnt :global(.ant-tabs-tab .ant-tabs-tab-btn) {
+      color: #f9fafb !important;
+      opacity: 0.7;
+      font: 600 18px/1 'Inter', sans-serif;
+      transition: none;
+    }
+
+    .shiftsTabsAnt :global(.ant-tabs-tab:hover .ant-tabs-tab-btn) {
+      color: #f9fafb !important;
+      opacity: 0.7;
+    }
+
+    .shiftsTabsAnt :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+      color: #f9fafb !important;
+      opacity: 1;
+    }
+
+    .shiftsTabsAnt :global(.ant-tabs-ink-bar) {
+      background: #f9fafb;
+      height: 3px !important;
+    }
+
+    .shiftsHeader {
+      color: rgba(249, 250, 251, 0.65);
+    }
+
+    .shiftsList {
+      &::-webkit-scrollbar-track {
+        background: rgba(249, 250, 251, 0.06);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(249, 250, 251, 0.35);
+      }
+    }
+
+    .shiftItemActive {
+      background: rgba(249, 250, 251, 0.08);
+    }
+
+    .shiftColId,
+    .shiftPointName,
+    .shiftColEmployee {
+      color: #f9fafb;
+    }
+
+    .shiftPointAddress {
+      color: rgba(249, 250, 251, 0.55);
+    }
+
+    .noDataEmpty :global(.ant-empty-description) {
+      color: #f9fafb;
+      opacity: 0.5;
+    }
+
+    .noDataEmpty :global(.ant-empty-image) {
+      opacity: 0.5;
+    }
+
+    /* Empty-state в карточках «Последние действия/Активные смены» — 1:1 по Figma dark */
+    .twoColumns .panelEmptyWrap .noDataEmpty {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      text-align: center;
+      color: #f9fafb;
+      font-family: 'Inter', sans-serif;
+
+      :global(.ant-empty-image) {
+        width: 125px;
+        height: 100px;
+        margin: 6px auto -10px !important;
+        opacity: 0.5;
+      }
+
+      :global(.ant-empty-image svg) {
+        width: 125px;
+        height: 100px;
+        display: block;
+      }
+
+      :global(.ant-empty-image svg [stroke]) {
+        stroke: #f9fafb;
+      }
+
+      :global(.ant-empty-description) {
+        align-self: stretch;
+        margin-top: 0 !important;
+        color: #f9fafb;
+        font: 400 18px/1.1 'Inter', sans-serif;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .smallCard {
+    background: #202326;
+    box-shadow: 4px 4px 10px rgba(68, 96, 122, 0.1), -4px -4px 10px rgba(68, 96, 122, 0.1);
+  }
+
+  .filterRow {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .noDataEmpty :global(.ant-empty-description) {
+    color: #f9fafb;
+  }
+
+  .noDataEmpty :global(.ant-empty-image svg) {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%) contrast(96%);
+  }
+
+  .noDataEmpty :global(.ant-empty-image svg [stroke]) {
+    stroke: #f9fafb;
+  }
+
+  .tabs {
+    border-bottom-color: rgba(249, 250, 251, 0.25);
+
+    span {
+      color: #f9fafb;
+      opacity: 0.7;
+    }
+  }
+
+  .activeTab {
+    border-bottom-color: #f9fafb;
+    opacity: 1 !important;
+  }
+
+  .subscriptionsHeader {
+    border-bottom-color: rgba(249, 250, 251, 0.15);
+  }
+
+  .subscriptionsCard {
+    background: #202326;
+    border: 1px solid rgba(249, 250, 251, 0.08);
+    box-shadow: -4px -4px 10px rgba(68, 96, 122, 0.1), 4px 4px 10px rgba(68, 96, 122, 0.1);
+  }
+
+  .subscriptionsTitle {
+    color: #f9fafb;
+  }
+
+  .subscriptionsManageText {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .subscriptionsTabsBar :global(.ant-tabs-nav) {
+    border-bottom-color: rgba(249, 250, 251, 0.25);
+  }
+
+  .subscriptionsTabsBar :global(.ant-tabs-tab .ant-tabs-tab-btn) {
+    color: #f9fafb !important;
+    opacity: 0.7;
+    font: 600 18px/1 'Inter', sans-serif;
+  }
+
+  .subscriptionsTabsBar :global(.ant-tabs-tab:hover .ant-tabs-tab-btn) {
+    color: #f9fafb !important;
+    opacity: 0.7;
+  }
+
+  .subscriptionsTabsBar :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+    opacity: 1;
+  }
+
+  .subscriptionsTabsBar :global(.ant-tabs-ink-bar) {
+    background: #f9fafb;
+  }
+
+  .subscriptionsHistoryEmptyText {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .subscriptionStatCard {
+    border-color: rgba(249, 250, 251, 0.25);
+    border-style: dashed;
+    background: rgba(249, 250, 251, 0.15);
+  }
+
+  .subscriptionStatLabel {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .subscriptionStatValue {
+    color: #f9fafb;
+  }
+
+  .subscriptionStatIconImg {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%) contrast(96%);
+    opacity: 0.5;
+  }
+
+  .subscriptionsStateStub {
+    color: rgba(249, 250, 251, 0.45);
+  }
+
+  .subscriptionsHistoryEmptyImg {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%) contrast(96%);
+  }
+
+  .subscriptionsHistoryEmptyText {
+    color: #f9fafb;
+  }
+
+  .employeesCard {
+    background: #202326;
+  }
+
+  .employeesCard .panelEmptyWrap .noDataEmpty {
+    opacity: 0.5;
+  }
+
+  .employeesCard .panelEmptyWrap .noDataEmpty :global(.ant-empty-image),
+  .employeesCard .panelEmptyWrap .noDataEmpty :global(.ant-empty-description) {
+    opacity: 1;
+  }
+
+  .employeesFooterLinkStatic:global(.ant-btn.ant-btn-link) {
+    pointer-events: none;
+  }
+
+  .employeesHeader {
+    border-bottom-color: rgba(249, 250, 251, 0.15);
+  }
+
+  .employeesTitle {
+    color: #f9fafb;
+  }
+
+  .employeesHeaderFilter > span {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .employeesSelect:global(.ant-select) :global(.ant-select-selector) {
+    border-color: rgba(249, 250, 251, 0.25) !important;
+    background: #202326 !important;
+  }
+
+  .employeesSelect:global(.ant-select) :global(.ant-select-selection-item),
+  .employeesSelect:global(.ant-select) :global(.ant-select-selection-placeholder) {
+    color: #f9fafb !important;
+  }
+
+  .employeesSelect:global(.ant-select) :global(.ant-select-arrow) {
+    color: rgba(156, 163, 175, 0.9) !important;
+  }
+
+  .employeesListHead {
+    border-bottom-color: rgba(249, 250, 251, 0.12);
+    color: rgba(249, 250, 251, 0.65);
+  }
+
+  .employeesListScroll {
+    &::-webkit-scrollbar-track {
+      background: rgba(249, 250, 251, 0.06);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #64748b;
+    }
+  }
+
+  .employeesListItem {
+    border-bottom-color: rgba(249, 250, 251, 0.1) !important;
+  }
+
+  .employeesName,
+  .employeesRole {
+    color: #e5e7eb;
+  }
+
+  .employeesAvatarPlaceholder {
+    background: #4b5563 !important;
+    color: #f9fafb !important;
+  }
+
+  .employeesFooter {
+    border-top-color: rgba(249, 250, 251, 0.15);
+  }
+
+  .employeesFooterLink {
+    color: rgba(249, 250, 251, 0.75) !important;
+
+    &:hover {
+      color: #f9fafb !important;
+    }
+
+    &:global(.ant-btn-disabled) {
+      color: rgba(249, 250, 251, 0.75) !important;
+    }
+
+    &:global(.ant-btn-disabled):hover {
+      color: rgba(249, 250, 251, 0.75) !important;
+    }
+  }
+
+  .kpiFilterGroup > span {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .kpiToolbarSelect :global(.ant-select-selector),
+  .kpiToolbarSelectCompare :global(.ant-select-selector) {
+    border-color: rgba(249, 250, 251, 0.25) !important;
+    background: rgba(249, 250, 251, 0.02) !important;
+  }
+
+  .kpiToolbarSelect :global(.ant-select-selection-item),
+  .kpiToolbarSelectCompare :global(.ant-select-selection-item) {
+    color: #f9fafb !important;
+  }
+
+  .kpiToolbarSelect :global(.ant-select-arrow),
+  .kpiToolbarSelectCompare :global(.ant-select-arrow) {
+    color: rgba(156, 163, 175, 0.9) !important;
+  }
+
+  .kpiSelectChevron {
+    filter: brightness(0) saturate(100%) invert(68%) sepia(8%) saturate(274%) hue-rotate(175deg) brightness(92%) contrast(90%);
+    opacity: 0.95;
+  }
+
+  .kpiToolbarAction {
+    color: rgba(249, 250, 251, 0.75);
+
+    img {
+      filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%)
+        contrast(96%);
+      opacity: 0.85;
+    }
+  }
+
+  .kpiToolbarActionPrimary {
+    color: #f9fafb;
+
+    img {
+      filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%)
+        contrast(96%);
+      opacity: 0.95;
+    }
+  }
+
+  .kpiTitleRow {
+    border-bottom-color: rgba(249, 250, 251, 0.25);
+  }
+
+  .kpiMainTitle {
+    color: #f9fafb;
+  }
+
+  .kpiCategoryTabsBar :global(.ant-tabs-tab .ant-tabs-tab-btn) {
+    color: #f9fafb !important;
+    opacity: 0.7;
+  }
+
+  .kpiCategoryTabsBar :global(.ant-tabs-tab:hover .ant-tabs-tab-btn) {
+    color: #f9fafb !important;
+    opacity: 0.7;
+  }
+
+  .kpiCategoryTabsBar :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+    opacity: 1;
+  }
+
+  .kpiCategoryTabsBar :global(.ant-tabs-ink-bar) {
+    background: #f9fafb;
+  }
+
+  .kpiMetricCard {
+    background: rgba(249, 250, 251, 0.15);
+  }
+
+  .kpiMetricCardFilled {
+    border-color: rgba(249, 250, 251, 0.25);
+    border-style: solid;
+  }
+
+  .kpiMetricTitle {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .kpiMetricEmptyImg,
+  .kpiChartEmptyColumn img {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(6%) saturate(232%) hue-rotate(180deg) brightness(104%) contrast(96%);
+  }
+
+  .kpiMetricEmptyLabel,
+  .kpiChartEmptyCaption {
+    color: #f9fafb;
+  }
+
+  .kpiMetricValue {
+    color: #f9fafb;
+  }
+
+  .kpiChartPanel {
+    border-color: rgba(249, 250, 251, 0.25);
+    background: rgba(249, 250, 251, 0.15);
+  }
+
+  .kpiChartTitle {
+    color: #f9fafb;
+  }
+
+  .kpiChartYAxis,
+  .kpiChartXAxisDates,
+  .kpiChartXAxisTimes {
+    color: rgba(249, 250, 251, 0.75);
+  }
+
+  .kpiBar {
+    background: rgba(249, 250, 251, 0.55);
+  }
+}
+
+html[data-theme='dark'] :global(.bp-filter-dropdown .ant-select-item) {
+  color: #e5e7eb;
+}
+
+html[data-theme='dark'] :global(.bp-filter-dropdown .ant-select-item-option-active:not(.ant-select-item-option-selected)) {
+  background: rgba(249, 250, 251, 0.08);
+}
+
+html[data-theme='dark'] :global(.bp-filter-dropdown .ant-select-item-option-selected) {
+  background: rgba(249, 250, 251, 0.14);
+  color: #f9fafb;
 }

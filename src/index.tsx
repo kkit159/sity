@@ -71,10 +71,12 @@ const App = () => {
           <Route path="/pager" element={<PagerPage />} />
           <Route path="/price" element={<PricingPage />} />
 
+          {/* Публичный доступ к странице бизнес-точек */}
+          <Route path="/business-points" element={<BusinessPointsPage />} />
+
           {/* ПРИВАТНЫЕ РОУТЫ (Личный кабинет) */}
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/business-points" element={<BusinessPointsPage />} />
           </Route>
 
           {/* Fallback */}
